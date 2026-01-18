@@ -1,0 +1,8 @@
+.env
+__pycache__/
+*.pyc
+qdrant_db/
+parent_store/
+markdown/
+docs/*.pdf
+venv/
