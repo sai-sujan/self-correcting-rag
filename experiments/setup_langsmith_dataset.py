@@ -27,7 +27,7 @@ from langsmith import Client
 client = Client()
 
 # Dataset name
-DATASET_NAME = "rag-evaluation-tests"
+DATASET_NAME = "rag-evaluation-tests-to-check-temperatures"
 
 # ============================================================================
 # COMPREHENSIVE TEST CASES

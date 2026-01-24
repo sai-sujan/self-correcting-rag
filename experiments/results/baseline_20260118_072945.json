@@ -1,0 +1,270 @@
+{
+  "run_id": "20260118_072945",
+  "timestamp": "2026-01-18T08:22:39.188747",
+  "experiment_id": "baseline",
+  "experiment_name": "baseline-20260118-072945",
+  "experiment_config": {
+    "name": "Baseline (Full Chunks)",
+    "description": "Original implementation with full chunk retrieval",
+    "module": "experiments.baseline.graph",
+    "graph_var": "agent_graph",
+    "tag": "baseline",
+    "version": "1.0"
+  },
+  "dataset": "rag-evaluation-tests",
+  "metrics": {},
+  "results": [
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    },
+    {
+      "inputs": {},
+      "outputs": {},
+      "reference": {},
+      "evaluations": {
+        "faithfulness": null,
+        "retrieval_f1": null,
+        "semantic_similarity": null,
+        "answer_quality": null,
+        "latency": null
+      }
+    }
+  ]
+}

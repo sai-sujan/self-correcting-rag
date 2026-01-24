@@ -1,0 +1,529 @@
+{
+  "run_id": "20260119_123021",
+  "timestamp": "2026-01-19T13:21:03.692711",
+  "experiment_id": "opt-v2-strict-search",
+  "experiment_name": "opt-v2-strict-search-20260119-123021",
+  "experiment_config": {
+    "name": "Optimized V2 (Strict Search)",
+    "description": "Enforces mandatory search before answering, no training knowledge",
+    "module": "experiments.opt_v2_strict_search.graph",
+    "graph_var": "agent_graph",
+    "tag": "opt-v2-strict-search",
+    "version": "1.0"
+  },
+  "dataset": "rag-evaluation-tests-corrected",
+  "metrics": {},
+  "results": [
+    {
+      "inputs": {
+        "question": "Tell me about machine learning"
+      },
+      "outputs": {
+        "answer": "Based on the provided table of contents, here are some key sections and their page numbers or locations:\n\n1. **Errors and Exceptions**\n   - Page: 345\n\n2. **Form Validation**\n   - Page: 354\n\n3. **Animation**\n   - Manual Animation: 360\n   - Automated Animation: 361\n   - Rollover with a Mouse Event: 362\n\n4. **Multimedia**\n   - Checking for Plug-Ins: 366\n   - Controlling Multimedia: 367\n\n5. **Debugging**\n   - Error Messages in IE: 369\n   - Error Messages in Firefox or Mozilla: 370\n   - Error Notifications: 371\n   - How to Debug a Script: 371\n   - Useful Tips for Developers: 372\n\n6. **Image Map**\n   - Page: 374 (Not detailed, just listed)\n\n7. **Browsers**\n   - Navigator Properties: 377\n   - Navigator Methods: 378\n   - Browser Detection: 379\n\nThese sections cover advanced topics in JavaScript such as error handling, form validation, animations, multimedia integration, debugging techniques, and browser compatibility issues.",
+        "retrieved_docs": "[{'parent_id': 'javascript_tutorial_parent_26', 'source': 'javascript_tutorial.pdf', 'snippet': '**47**\\n\\n\\n```\\n//-->  \\n</script>  \\n<p>Set the variables to different values and different operators an...'}, {'parent_id': 'javascript_tutorial_parent_23', 'source': 'javascript_tutorial.pdf', 'snippet': '**Example**\\n\\n\\n\\n**36**\\n\\n\\nTry the following code to learn how to implement Logical Operators in JavaSc...'}, {'parent_id': 'javascript_tutorial_parent_4', 'source': 'javascript_tutorial.pdf', 'snippet': '## **Table of Contents**  \\nAbout the Tutorial .........................................................'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_10', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': '_such as designing, making simulations, collaborating, learning, socializing, carrying out transacti...'}, {'parent_id': 'javascript_tutorial_parent_4', 'source': 'javascript_tutorial.pdf', 'snippet': 'lastIndexOf () ........................................................................................'}]\n---\n[{'content': '## **Logical Operators**  \\n```\\n\\nJavaScript supports the following logical operators:\\n\\n\\nAssume variable A holds 10 and variable B holds 20, then:\\n\\n\\n\\n\\n\\n\\n|S.No|Operator and Description|\\n|---|---|\\n|1|**&& (Logical AND)**<br>If both the operands are non-zero, then the condition becomes true.<br>**Ex:** (A && B) is true.|\\n|2|**|| (Logical OR)**<br>If any of the two operands are non-zero, then the condition becomes true.<br>**Ex:** (A || B) is true.|\\n|3|**! (Logical NOT)**<br>Reverses the logical state of its operand. If a condition is true, then the<br>Logical NOT operator will make it false.<br>**Ex:** ! (A && B) is false.|\\n\\n\\n\\n**Example**\\n\\n\\n\\n**36**\\n\\n\\nTry the following code to learn how to implement Logical Operators in JavaScript.\\n\\n```\\n<html>  \\n<body>  \\n<script type=\"text/javascript\">  \\n<!-\\nvar a = true;  \\nvar b = false;  \\nvar linebreak = \"<br />\";  \\ndocument.write(\"(a && b) => \");  \\nresult = (a && b);  \\ndocument.write(result);  \\ndocument.write(linebreak);  \\ndocument.write(\"(a || b) => \");  \\nresult = (a || b);  \\ndocument.write(result);  \\ndocument.write(linebreak);  \\ndocument.write(\"!(a && b) => \");  \\nresult = (!(a && b));  \\ndocument.write(result);  \\ndocument.write(linebreak);  \\n//-->  \\n</script>  \\n```\\n\\n**37**\\n\\n\\n```\\n<p>Set the variables to different values and different operators and then\\ntry...</p>  \\n</body>  \\n</html>  \\n```\\n\\nOutput\\n\\n```\\n(a && b) => false\\n(a || b) => true\\n!(a && b) => true  \\nSet the",
+        "retrieved_chunks": [
+          "javascript_tutorial_parent_23",
+          "javascript_tutorial_parent_26",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_10",
+          "javascript_tutorial_parent_4"
+        ]
+      },
+      "reference": {
+        "test_id": "edge-002-ml",
+        "category": "edge-case",
+        "difficulty": "hard",
+        "question_type": "out-of-scope",
+        "expected_chunks": [],
+        "reference_answer": "NOT_IN_DOCUMENTS - Machine learning is not covered in the available documents about JavaScript and Blockchain."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What is Python?"
+      },
+      "outputs": {
+        "answer": "I found some information related to JavaScript, but it seems there is no direct mention of Python. Here's what I could gather about JavaScript:\n\n- JavaScript is a lightweight, interpreted programming language.\n- It was designed for creating dynamic web pages and client-side scripting.\n\nIf you have any specific questions or need more detailed information on Python, please let me know!",
+        "retrieved_docs": "[{'parent_id': 'javascript_tutorial_parent_26', 'source': 'javascript_tutorial.pdf', 'snippet': '**47**\\n\\n\\n```\\n//-->  \\n</script>  \\n<p>Set the variables to different values and different operators an...'}, {'parent_id': 'javascript_tutorial_parent_12', 'source': 'javascript_tutorial.pdf', 'snippet': '## **Whitespace and Line Breaks**\\n\\n```  \\nJavaScript ignores spaces, tabs, and newlines that appear i...'}, {'parent_id': 'javascript_tutorial_parent_22', 'source': 'javascript_tutorial.pdf', 'snippet': 'Output\\n\\n```\\n(a == b) => false\\n(a < b) => true\\n(a > b) => false\\n(a != b) => true\\n(a >= b) => false  \\n...'}]\n---\n[{'parent_id': 'javascript_tutorial_parent_26', 'source': 'javascript_tutorial.pdf', 'snippet': '**47**\\n\\n\\n```\\n//-->  \\n</script>  \\n<p>Set the variables to different values and different operators an...'}, {'parent_id': 'javascript_tutorial_parent_23', 'source': 'javascript_tutorial.pdf', 'snippet': '**37**\\n\\n\\n```\\n<p>Set the variables to different values and different operators and then\\ntry...</p>  \\n...'}, {'parent_id': 'javascript_tutorial_parent_4', 'source': 'javascript_tutorial.pdf', 'snippet': 'charAt() ..............................................................................................'}]\n---\n[{'parent_id': 'javascript_tutorial_parent_6', 'source': 'javascript_tutorial.pdf', 'snippet': 'language.  \\n- JavaScript is a lightweight, interpreted programming language.  \\n- Designed for creati...'}, {'parent_id': 'javascript_tutorial_parent_0', 'source': 'javascript_tutorial.pdf', 'snippet': '## **About the Tutorial**  \\nJavaScript is a lightweight, interpreted programming language. It is des...'}, {'parent_id': 'javascript_tutorial_parent_21', 'source': 'javascript_tutorial.pdf', 'snippet': 'For example, you can keep the following content in **filename.js** file and then you\\ncan use **sayHe...'}]",
+        "retrieved_chunks": [
+          "javascript_tutorial_parent_26",
+          "javascript_tutorial_parent_12",
+          "javascript_tutorial_parent_21",
+          "javascript_tutorial_parent_23",
+          "javascript_tutorial_parent_0",
+          "javascript_tutorial_parent_6",
+          "javascript_tutorial_parent_4",
+          "javascript_tutorial_parent_22"
+        ]
+      },
+      "reference": {
+        "test_id": "edge-001-python",
+        "category": "edge-case",
+        "difficulty": "hard",
+        "question_type": "out-of-scope",
+        "expected_chunks": [],
+        "reference_answer": "NOT_IN_DOCUMENTS - The system should indicate that Python is not covered in the available documents."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "When should I use blockchain instead of a traditional database?"
+      },
+      "outputs": {
+        "answer": "Based on the document, blockchain technology should be considered over traditional databases when you need:\n\n1. **Immutable and tamper-proof records**: Blockchain is designed to provide an immutable ledger where data once written cannot be altered.\n2. **Decentralization and trustlessness**: If your application operates without a central authority or intermediary, blockchain's decentralized nature can be advantageous.\n3. **Transparency and auditability**: Blockchains are transparent, making every transaction or change visible to all participants in the network.\n4. **Smart contracts**: Blockchain platforms like Ethereum enable self-executing contracts with predefined rules and conditions.\n5. **Cryptographic security**: Blockchain technology leverages cryptographic techniques for securing data and transactions.\n6. **Cross-organizational trust**: In situations where multiple organizations need to collaborate and share data while maintaining trust, a blockchain can be beneficial.\n7. **Cryptocurrency or token management**: If your application involves managing digital assets like cryptocurrencies or tokens.\n\nTraditional databases are better suited for applications that require high-speed data processing, low latency, or do not necessitate the features provided by blockchain. In some cases, a hybrid approach combining both technologies might also be appropriate to leverage their respective strengths.",
+        "retrieved_docs": "[{'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_7', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': '##### **2.2 Blockchain vs Traditional Databases**  \\n**Traditional databases**  \\nWhen discussing trad...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_7', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'are crucial.  \\n**Key Differences in Simple Terms**  \\n**Control:** Traditional databases are like a p...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_7', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'database are controlled by the administrator, and security is maintained through passwords, firewall...'}]\n---\n[{'content': \"## **2 Understanding the Fundamentals**  \\n##### **2.1 How does Blockchain work** **2.1.1. Decentralization**  \\nBlockchain decentralization is a \u201cparadigm shift\u201d from centralized systems. It distributes power and control\\nacross a network, enhances security, and promotes transparency. This technology has far-reaching\\nimplications beyond cryptocurrencies, including supply chain, healthcare, and more, where trust and security\\nare paramount.  \\nThe key concepts of decentralization include:  \\nPage 10 | 33  \\n**Blockchain for beginners**  \\n_**Figure 1: The Key concepts of decentralization**_  \\nA practical example of how decentralization works on blockchain is Bitcoin (see previous section). Bitcoin is a\\ndigital currency built on blockchain. There is no central bank controlling it; instead, transactions are verified by\\na global network of nodes, making it decentralized.  \\n##### **2.1.2. Cryptography**  \\nTo grasp what Cryptography entails, think of it as a tamper-proof seal on a jar. If the seal is broken (akin to the\\ncryptographic rules being violated), the contents of the jar might have been tampered with. Just like how the\\nseal protects the jar, cryptography protects the information on the blockchain.  \\nWhen we discuss blockchain cryptography, this entails the following components:  \\n**Digital Signatures:** the purpose of digital signatures is to ensure security and authenticity. To achieve this,\\nwhen a user makes a transaction, they sign it with thei",
+        "retrieved_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_7"
+        ]
+      },
+      "reference": {
+        "test_id": "bc-011-when-to-use",
+        "category": "blockchain",
+        "difficulty": "hard",
+        "question_type": "conceptual",
+        "expected_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_7"
+        ],
+        "reference_answer": "Use blockchain when you need: immutable/tamper-proof records, decentralization without central authority, transparency and auditability, smart contracts, cryptographic security, cross-organizational trust, or cryptocurrency management."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What are CBDCs and how do they differ from cryptocurrencies?"
+      },
+      "outputs": {
+        "answer": "Based on the provided information, here are some key points about emerging topics in blockchain technology:\n\n### 5.1 Decentralized Finance (DeFi)\n- **Overview**: DeFi aims to create a financial system that is more accessible and less controlled by traditional financial institutions.\n- **Key Features**:\n  - **Lending and Borrowing**: Platforms like Aave, Compound allow users to lend and borrow assets without intermediaries.\n  - **Stablecoins**: Cryptocurrencies pegged to the value of fiat currencies (e.g., USDC) for stability.\n  - **Decentralized Exchanges (DEXs)**: Trading platforms that operate on blockchain networks, offering anonymity and lower fees compared to centralized exchanges.\n\n### 5.2 Virtual Worlds and Omniverse\n- **Overview**: These are digital environments where users can interact with each other in a virtual space, often using cryptocurrencies or tokens.\n- **Key Features**:\n  - **Decentralized Autonomous Organizations (DAOs)**: Governance structures that operate on blockchain networks, allowing community members to make decisions through voting mechanisms.\n  - **NFTs**: Non-fungible tokens representing unique digital assets like art, collectibles, and virtual real estate.\n\n### 5.3 Interoperability\n- **Overview**: The ability of different blockchain networks to communicate with each other, sending and receiving messages, data, and tokens.\n- **Key Challenges**:\n  - Ensuring transaction finality across different chains.\n  - Managing cross-chain smart contract execution.\n  - Maintaining data integrity during cross-chain communication.\n\n### 5.4 Central Bank Digital Currencies (CBDCs)\n- **Overview**: Digital versions of fiat currencies issued and regulated by central banks, aiming to provide a more efficient and secure payment system.\n- **Key Features**:\n  - **Digital Euro**: The European Central Bank is exploring the implementation of a digital euro.\n  - **Global CBDCs**: Over 105 countries are engaged in CBDC development.\n\n### 5.5 Environmental Concerns and Solutions\n- **Overview**: Addressing the environmental impact of blockchain technology, particularly proof-of-work (PoW) mechanisms.\n- **Key Solutions**:\n  - Exploring alternative consensus mechanisms like Proof-of-Stake (PoS).\n  - Utilizing renewable energy sources for mining activities.\n  - Implementing carbon offset programs to balance out emissions.\n\n### Summary\nThese emerging topics highlight the diverse applications and challenges of blockchain technology. DeFi is transforming traditional finance, virtual worlds are creating new digital economies, interoperability is bridging different blockchain networks, CBDCs are reshaping monetary systems, and environmental concerns are driving sustainable solutions. Understanding these areas can help in grasping the broader impact and potential of blockchain technology on various industries.",
+        "retrieved_docs": "[{'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_10', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': '_as they are digital representations of value, recorded as a liability of the central bank and an as...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_10', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'initially proposed Diem (formerly Libra) by Facebook (now Meta).  \\nCentral Bank Digital Currencies (...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_11', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': '##### **6.3 Asia: Singapore and Hong Kong**  \\nEvery Asian nation follows a different strategy toward...'}]\n---\n[{'content': '## **5 Emerging Topics in Blockchain**  \\n##### **5.1 NFTs (Non-Fungible Tokens)**  \\nAn NFT, short for Non-Fungible Token, is a type of digital asset distinct in its uniqueness and noninterchangeability with other digital tokens. Unlike fungible tokens, each NFT is cryptographically verified for\\nits singularity and stored on a blockchain or distributed ledger, visible to all. While this isn\\'t always the case,\\nNFTs represent more than just digital records of an asset; they are unique digital assets. This concept is akin\\nto how blockchain technology has enabled the creation of an\u201d internet of value\u201d.  \\nThe history of NFTs has evolved from basic digital collectibles to complex asset ownership models. Originating\\nwith \"colored coins\" on the Bitcoin network in 2012, these early NFTs added specific utility to Bitcoins. The first\\nmajor NFT project, CryptoPunks, launched in mid-2017 on Ethereum, featuring 10,000 unique digital\\ncharacters. CryptoKitties soon followed, popularizing NFTs with a game that allowed users to breed digital\\ncats. Today, NFTs have expanded into the realms of art, sports, and music, with platforms like SuperRare and\\nOpenSea facilitating the trading and creation of a wide range of digital assets. Ethereum\u2019s ERC-721 is the\\nmost popular blockchain for NFTs and it serves as the basis for determining specific characteristics of NFTs:  \\n- **Uniqueness:** NFTs are individually identifiable, with a limited number issued, like the 10,000 uniqu",
+        "retrieved_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_11",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_10"
+        ]
+      },
+      "reference": {
+        "test_id": "bc-010-cbdc",
+        "category": "blockchain",
+        "difficulty": "hard",
+        "question_type": "comparison",
+        "expected_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_10"
+        ],
+        "reference_answer": "CBDCs (Central Bank Digital Currencies) are digital money issued by central banks, representing a claim against the issuing bank. Unlike decentralized cryptocurrencies like Bitcoin, CBDCs are centralized and controlled by central banks."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What is DeFi and how is it different from traditional finance?"
+      },
+      "outputs": {
+        "answer": "What specific topic are you asking about?",
+        "retrieved_docs": "No documents retrieved",
+        "retrieved_chunks": []
+      },
+      "reference": {
+        "test_id": "bc-009-defi",
+        "category": "blockchain",
+        "difficulty": "hard",
+        "question_type": "comparison",
+        "expected_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_10"
+        ],
+        "reference_answer": "DeFi (Decentralized Finance) operates on decentralized, peer-to-peer models through smart contracts, bypassing traditional intermediaries. Unlike TradFi which is centralized, custodial, and requires identity verification, DeFi is open, permissionless, and censorship-resistant."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What is the difference between blockchain and traditional databases?"
+      },
+      "outputs": {
+        "answer": "Based on the document, here are some key differences between blockchain and traditional databases:\n\n1. **Control**:\n   - Traditional Databases: Managed by a single entity or organization with centralized control.\n   - Blockchain: Decentralized system where no single entity has full control; data is maintained by a network of nodes.\n\n2. **Security**:\n   - Traditional Databases: Secured through passwords, firewalls, and other measures controlled by the administrator.\n   - Blockchain: Uses cryptographic techniques to ensure security and tamper-proof nature. Once data is added, it cannot be altered or deleted.\n\n3. **Data Modification**:\n   - Traditional Databases: Data can be easily modified, added, or deleted.\n   - Blockchain: Transactions are immutable; once written, they cannot be erased or changed.\n\n4. **Transparency and Auditability**:\n   - Traditional Databases: Access to data is controlled by the administrator, making it less transparent.\n   - Blockchain: All transactions are visible to everyone in the network, providing high transparency and traceability.\n\n5. **Decentralization and Trustlessness**:\n   - Traditional Databases: Rely on a central authority or intermediary for validation and management of data.\n   - Blockchain: Operates without a central authority, allowing multiple parties to participate independently.\n\n6. **Use Cases**:\n   - Traditional Databases: Suitable for applications requiring high-speed data processing, low latency, or where the features provided by blockchain are not necessary.\n   - Blockchain: Ideal for scenarios needing immutable and tamper-proof records, decentralized trust, transparency, smart contracts, cryptographic security, cross-organizational trust, and cryptocurrency management.\n\nIn summary, while traditional databases offer centralized control and flexibility in data modification, blockchain provides a more secure, transparent, and decentralized system that is particularly useful for applications requiring high levels of integrity and trust.",
+        "retrieved_docs": "[{'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_7', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'are crucial.  \\n**Key Differences in Simple Terms**  \\n**Control:** Traditional databases are like a p...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_7', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': '##### **2.2 Blockchain vs Traditional Databases**  \\n**Traditional databases**  \\nWhen discussing trad...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_7', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'the above differences.  \\n**When to Use Blockchain**  \\nPage 13 | 33  \\n**Blockchain for beginners**  \\n...'}]\n---\n[{'content': \"## **2 Understanding the Fundamentals**  \\n##### **2.1 How does Blockchain work** **2.1.1. Decentralization**  \\nBlockchain decentralization is a \u201cparadigm shift\u201d from centralized systems. It distributes power and control\\nacross a network, enhances security, and promotes transparency. This technology has far-reaching\\nimplications beyond cryptocurrencies, including supply chain, healthcare, and more, where trust and security\\nare paramount.  \\nThe key concepts of decentralization include:  \\nPage 10 | 33  \\n**Blockchain for beginners**  \\n_**Figure 1: The Key concepts of decentralization**_  \\nA practical example of how decentralization works on blockchain is Bitcoin (see previous section). Bitcoin is a\\ndigital currency built on blockchain. There is no central bank controlling it; instead, transactions are verified by\\na global network of nodes, making it decentralized.  \\n##### **2.1.2. Cryptography**  \\nTo grasp what Cryptography entails, think of it as a tamper-proof seal on a jar. If the seal is broken (akin to the\\ncryptographic rules being violated), the contents of the jar might have been tampered with. Just like how the\\nseal protects the jar, cryptography protects the information on the blockchain.  \\nWhen we discuss blockchain cryptography, this entails the following components:  \\n**Digital Signatures:** the purpose of digital signatures is to ensure security and authenticity. To achieve this,\\nwhen a user makes a transaction, they sign it with thei",
+        "retrieved_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_7"
+        ]
+      },
+      "reference": {
+        "test_id": "bc-008-vs-traditional-db",
+        "category": "blockchain",
+        "difficulty": "hard",
+        "question_type": "comparison",
+        "expected_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_7"
+        ],
+        "reference_answer": "Traditional databases are centralized with single entity control, easy data modification, and admin-controlled access. Blockchain is decentralized across many nodes, data is immutable once added, transparent to all participants, and uses cryptographic security."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What are NFTs?"
+      },
+      "outputs": {
+        "answer": "Based on the provided information, here are some key points about emerging topics in blockchain technology:\n\n### 5.1 Decentralized Finance (DeFi)\n- **Overview**: DeFi aims to create a financial system that is open and accessible to everyone without relying on traditional financial institutions.\n- **Key Features**:\n  - **Lending and Borrowing**: Platforms like Aave, Compound allow users to lend or borrow assets.\n  - **Staking and Yield Farming**: Users can stake tokens to earn rewards or participate in governance.\n  - **Decentralized Exchanges (DEXs)**: DEXs such as Uniswap enable trading of cryptocurrencies without intermediaries.\n\n### 5.2 Virtual Worlds and Omniverse\n- **Overview**: Virtual worlds like Decentraland, The Sandbox allow users to own virtual assets and engage in economic activities.\n- **Key Features**:\n  - **Ownership and NFTs**: Users can buy, sell, or trade non-fungible tokens (NFTs) representing unique digital items.\n  - **Interoperability**: Blockchain interoperability is crucial for integrating various technologies like IoT, AI, and digital twins.\n\n### 5.3 Central Bank Digital Currencies (CBDC)\n- **Overview**: CBDCs are digital versions of fiat currencies issued by central banks.\n- **Key Features**:\n  - **European Central Bank (ECB)**: The ECB is exploring the \"digital euro\" with various experiments and projects.\n  - **Global Adoption**: Over 105 countries are engaged in CBDC development, significantly more than in previous years.\n\n### 5.4 Interoperability\n- **Overview**: Interoperability enables different blockchain networks to communicate and exchange data seamlessly.\n- **Key Challenges**:\n  - Ensuring transaction finality across different chains.\n  - Managing cross-chain smart contract execution.\n  - Maintaining data integrity during cross-chain communication.\n- **Potential Benefits**:\n  - Enhanced efficiency, security, and transparency in various technological realms.\n  - Crucial for the success of a decentralized internet.\n\n### 5.5 Environmental Concerns and Solutions\n- **Overview**: Blockchain technology, especially PoW blockchains, has significant environmental impacts due to high energy consumption.\n- **Key Solutions**:\n  - Exploring alternative consensus mechanisms like Proof-of-Stake (PoS) and Proof-of-Authority (PoA).\n  - Utilizing renewable energy sources for mining activities.\n  - Implementing carbon offset programs.\n\n### Summary\nThese emerging topics highlight the evolving landscape of blockchain technology, emphasizing its potential to transform various sectors while addressing critical issues such as environmental sustainability. Understanding these areas can help in making informed decisions and contributing positively to the broader adoption and scalability of blockchain solutions.",
+        "retrieved_docs": "[{'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_10', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'NFTs represent more than just digital records of an asset; they are unique digital assets. This conc...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_10', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'most popular blockchain for NFTs and it serves as the basis for determining specific characteristics...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_10', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'major NFT project, CryptoPunks, launched in mid-2017 on Ethereum, featuring 10,000 unique digital\\nch...'}]\n---\n[{'content': '## **5 Emerging Topics in Blockchain**  \\n##### **5.1 NFTs (Non-Fungible Tokens)**  \\nAn NFT, short for Non-Fungible Token, is a type of digital asset distinct in its uniqueness and noninterchangeability with other digital tokens. Unlike fungible tokens, each NFT is cryptographically verified for\\nits singularity and stored on a blockchain or distributed ledger, visible to all. While this isn\\'t always the case,\\nNFTs represent more than just digital records of an asset; they are unique digital assets. This concept is akin\\nto how blockchain technology has enabled the creation of an\u201d internet of value\u201d.  \\nThe history of NFTs has evolved from basic digital collectibles to complex asset ownership models. Originating\\nwith \"colored coins\" on the Bitcoin network in 2012, these early NFTs added specific utility to Bitcoins. The first\\nmajor NFT project, CryptoPunks, launched in mid-2017 on Ethereum, featuring 10,000 unique digital\\ncharacters. CryptoKitties soon followed, popularizing NFTs with a game that allowed users to breed digital\\ncats. Today, NFTs have expanded into the realms of art, sports, and music, with platforms like SuperRare and\\nOpenSea facilitating the trading and creation of a wide range of digital assets. Ethereum\u2019s ERC-721 is the\\nmost popular blockchain for NFTs and it serves as the basis for determining specific characteristics of NFTs:  \\n- **Uniqueness:** NFTs are individually identifiable, with a limited number issued, like the 10,000 uniqu",
+        "retrieved_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_10"
+        ]
+      },
+      "reference": {
+        "test_id": "bc-007-nfts",
+        "category": "blockchain",
+        "difficulty": "medium",
+        "question_type": "factual",
+        "expected_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_10"
+        ],
+        "reference_answer": "NFTs (Non-Fungible Tokens) are unique digital assets that are non-interchangeable, cryptographically verified, and stored on blockchain. Key features include uniqueness, rarity, proof of ownership, immutability, and programmability."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What is cryptography in blockchain?"
+      },
+      "outputs": {
+        "answer": "### Key Concepts in Blockchain for Beginners\n\n#### 1. **Introduction to Blockchain**\n- **Definition**: A decentralized, digital ledger that records transactions across multiple computers.\n- **Purpose**: To provide a secure and transparent way of recording data without the need for intermediaries.\n\n#### 2. **Components of Blockchain**\n- **Blocks**: Units in which data is stored.\n- **Chain**: The sequence of blocks linked together to form a chain.\n- **Nodes**: Computers that maintain copies of the blockchain ledger.\n\n#### 3. **Blockchain Technology and Its Benefits**\n- **Decentralization**: No single point of control, making it resistant to tampering and censorship.\n- **Transparency**: All transactions are visible to network participants.\n- **Security**: Uses cryptographic techniques to secure data and prevent unauthorized access or alterations.\n- **Immutability**: Once data is added to the blockchain, it cannot be altered or deleted.\n\n#### 4. **Types of Blockchain**\n- **Public Blockchain**: Open to anyone (e.g., Bitcoin).\n- **Private Blockchain**: Controlled by a single organization (e.g., Hyperledger Fabric).\n- **Consortium Blockchain**: Managed by multiple organizations with predefined rules.\n\n#### 5. **Consensus Mechanisms**\n- **Proof of Work (PoW)**: Miners solve complex mathematical puzzles to validate transactions and create new blocks.\n- **Proof of Stake (PoS)**: Validators are chosen based on the amount of cryptocurrency they stake.\n- **Delegated Proof of Stake (dPoS)**: Stakeholders vote for delegates who manage the blockchain.\n- **Proof of Authority (PoA)**: Transactions validated by approved accounts.\n\n#### 6. **Comparison with Traditional Databases**\n- **Control**: Traditional databases are centrally managed, while blockchains are decentralized.\n- **Security**: Traditional databases rely on passwords and firewalls, whereas blockchains use cryptographic techniques.\n- **Data Modification**: In traditional databases, data can be easily modified or deleted; in blockchains, once written, it is immutable.\n\n#### 7. **When to Use Blockchain**\n- **Immutable Records**: Ideal for applications requiring a tamper-proof record-keeping system.\n- **Decentralization and Trustlessness**: Suitable for systems without central authorities.\n- **Transparency and Auditability**: Beneficial in industries like supply chain management.\n- **Smart Contracts**: Useful for automated contract execution.\n- **Cryptographic Security**: Essential when dealing with sensitive information.\n\n#### 8. **Limitations of Blockchain**\n- **Scalability**: Can be slow compared to traditional databases.\n- **Performance**: Limited transaction throughput.\n- **Cost**: High energy consumption and maintenance costs.\n\n### Summary\nBlockchain technology offers a secure, transparent, and decentralized way of recording data. It is particularly useful in scenarios where trustless transactions are required, such as cryptocurrency management, supply chain tracking, and smart contracts. However, it comes with limitations that need to be considered when deciding whether to use blockchain over traditional databases.\n\nIf you have any specific questions or need further details on any of these points, feel free to ask!",
+        "retrieved_docs": "[{'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_5', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'participants, often spanning different corporate entities and geographical locations.  \\n**Cryptograp...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_6', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': '## **1 Introduction to Blockchain**  \\n##### **1.1 What is Blockchain: Definition and Basics**  \\n**Ce...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_7', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'a global network of nodes, making it decentralized.  \\n##### **2.1.2. Cryptography**  \\nTo grasp what ...'}]\n---\n[{'content': '## **A-Z Glossary of Blockchain Terms**  \\n**Bitcoin:** A cryptocurrency, the first and most renowned application (use case) of blockchain technology,\\nspecifically within financial services.  \\n**Blockchain:** A tamper-proof, shared digital ledger that records transactions in a decentralized peer-to-peer\\nnetwork. The permanent recording of transactions in the blockchain permanently stores the history of asset\\nexchanges between the peers (participants) in the network.  \\n**CBDC:** A Central Bank Digital Currency is a form of digital money, issued by a central bank.  \\n**Centralization:** When a single entity, such as a bank or land registry, maintains control over transaction\\nrecords and data.  \\n**Consensus Mechanism:** A consensus mechanism is a way to achieve agreement on a single data value\\namong distributed processes or systems. In the context of blockchain, it\\'s a set of rules or protocols that decide\\non the validity of the information added to the ledger.  \\n**Consortium Blockchain:** It is used by organizations to enable private transactions among a circle of trusted\\nparticipants, often spanning different corporate entities and geographical locations.  \\n**Cryptography:** A set of techniques and algorithms that ensure the security and integrity of data stored and\\ntransmitted on a blockchain network. Cryptography plays a crucial role in maintaining the decentralized,\\ntransparent, and tamper-proof nature of blockchain systems.  \\n**Decentralizatio",
+        "retrieved_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_5",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_6",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_7"
+        ]
+      },
+      "reference": {
+        "test_id": "bc-006-cryptography",
+        "category": "blockchain",
+        "difficulty": "medium",
+        "question_type": "conceptual",
+        "expected_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_7"
+        ],
+        "reference_answer": "Blockchain cryptography includes digital signatures (authenticate transactions using private/public keys), hash functions (create unique fingerprints of data for integrity), and ensures security, integrity, and decentralization of the network."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What are the different consensus mechanisms?"
+      },
+      "outputs": {
+        "answer": "",
+        "retrieved_docs": "[{'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_5', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': '**Consensus Mechanism:** A consensus mechanism is a way to achieve agreement on a single data value\\n...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_5', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'exchanges between the peers (participants) in the network.  \\n**CBDC:** A Central Bank Digital Curren...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_7', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'ensuring consistency across the network, without the need for a central authority.  \\nIt is still imp...'}]\n---\n[{'content': '## **A-Z Glossary of Blockchain Terms**  \\n**Bitcoin:** A cryptocurrency, the first and most renowned application (use case) of blockchain technology,\\nspecifically within financial services.  \\n**Blockchain:** A tamper-proof, shared digital ledger that records transactions in a decentralized peer-to-peer\\nnetwork. The permanent recording of transactions in the blockchain permanently stores the history of asset\\nexchanges between the peers (participants) in the network.  \\n**CBDC:** A Central Bank Digital Currency is a form of digital money, issued by a central bank.  \\n**Centralization:** When a single entity, such as a bank or land registry, maintains control over transaction\\nrecords and data.  \\n**Consensus Mechanism:** A consensus mechanism is a way to achieve agreement on a single data value\\namong distributed processes or systems. In the context of blockchain, it\\'s a set of rules or protocols that decide\\non the validity of the information added to the ledger.  \\n**Consortium Blockchain:** It is used by organizations to enable private transactions among a circle of trusted\\nparticipants, often spanning different corporate entities and geographical locations.  \\n**Cryptography:** A set of techniques and algorithms that ensure the security and integrity of data stored and\\ntransmitted on a blockchain network. Cryptography plays a crucial role in maintaining the decentralized,\\ntransparent, and tamper-proof nature of blockchain systems.  \\n**Decentralizatio",
+        "retrieved_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_5",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_7"
+        ]
+      },
+      "reference": {
+        "test_id": "bc-005-consensus",
+        "category": "blockchain",
+        "difficulty": "medium",
+        "question_type": "factual",
+        "expected_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_7"
+        ],
+        "reference_answer": "Main consensus mechanisms include: Proof of Work (PoW) - miners solve puzzles, used by Bitcoin; Proof of Stake (PoS) - validators stake cryptocurrency; Delegated PoS (dPoS) - stakeholders vote for delegates; Proof of Authority (PoA) - approved validators, faster but less decentralized."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "How does mining work in blockchain?"
+      },
+      "outputs": {
+        "answer": "The provided tool responses contain detailed information about blockchain technology, its applications, and relevant references. Here's a summary of the key points:\n\n### Key Points from the Responses\n\n1. **Introduction to Blockchain Technology:**\n   - Blockchain is a decentralized digital ledger that records transactions across multiple computers in such a way that the registered transactions cannot be altered retroactively.\n   - It provides transparency, security, and immutability.\n\n2. **Types of Blockchains:**\n   - **Public Blockchains:** Open to anyone who wants to participate (e.g., Bitcoin, Ethereum).\n   - **Private Blockchains:** Limited access controlled by a specific organization or consortium (e.g., Hyperledger Fabric).\n\n3. **Applications of Blockchain:**\n   - Financial Services: Payments, remittances, and asset trading.\n   - Supply Chain Management: Tracking products from origin to destination.\n   - Healthcare: Secure storage and sharing of medical records.\n   - Voting Systems: Ensuring transparency and preventing fraud.\n\n4. **Regulatory and Policy Considerations:**\n   - Central Bank Digital Currencies (CBDCs): Digital versions of national currencies issued by central banks, discussed in reports from the European Central Bank (ECB) and the Monetary Authority of Singapore (MAS).\n   - Privacy Issues: CBDC designers are grappling with privacy concerns while ensuring monetary freedom.\n\n5. **References and Further Reading:**\n   - Various articles, reports, and videos provide detailed insights into blockchain technology, its implementation in different sectors, and regulatory frameworks.\n   - Key sources include:\n     - The New York Times article by Andreessen (2014) on why Bitcoin matters.\n     - Reports from the EU Blockchain Observatory and Forum on Decentralized Finance (DeFi).\n     - ECB publications on digital payments and CBDCs.\n     - Videos and articles discussing CBDC design principles, such as those by Professor George Giaglis.\n\n### Summary of References\n\n- **Andreessen, M.** (2014). Why Bitcoin Matters. The New York Times.\n  - URL: [https://archive.nytimes.com/dealbook.nytimes.com/2014/01/21/why-bitcoin-matters/](https://archive.nytimes.com/dealbook.nytimes.com/2014/01/21/why-bitcoin-matters/)\n  \n- **EU Blockchain Observatory and Forum.** (2021). Decentralized Finance (DeFi).\n  - URL: [https://www.eublockchainforum.eu/sites/default/files/reports/DeFi%20Report%20EUBOF%20%20Final_0.pdf](https://www.eublockchainforum.eu/sites/default/files/reports/DeFi%20Report%20EUBOF%20%20Final_0.pdf)\n  \n- **ECB (European Central Bank).** Various reports and publications on digital payments, CBDCs.\n  - URLs: [https://www.ecb.europa.eu/pub/economicbulletin/focus/2019/html/ecb.ebbox201907_01~b4d59ec4ee.en.html](https://www.ecb.europa.eu/pub/economicbulletin/focus/2019/html/ecb.ebbox201907_01~b4d59ec4ee.en.html)\n  - [https://www.ecb.europa.eu/press/key/date/2020/html/ecb.sp200910~31e6ae9835.en.html](https://www.ecb.europa.eu/press/key/date/2020/html/ecb.sp200910~31e6ae9835.en.html)\n  - [https://www.ecb.europa.eu/press/pr/date/2023/html/ecb.pr231018~111a014ae7.en.html](https://www.ecb.europa.eu/press/pr/date/2023/html/ecb.pr231018~111a014ae7.en.html)\n  \n- **Giaglis, G.** (2020). Everything You Always Wanted to Know About CBDCs.\n  - URL: [https://medium.com/the-capital/everything-you-always-wanted-to-know-aboutcbdcs-but-were-afraid-to-ask-c7b11fe67aba](https://medium.com/the-capital/everything-you-always-wanted-to-know-aboutcbdcs-but-were-afraid-to-ask-c7b11fe67aba)\n\nThese references provide a comprehensive understanding of blockchain technology, its applications, and the regulatory landscape.",
+        "retrieved_docs": "[{'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_6', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'of computing effort to prove (or \"confirm\") these blocks. However, once confirmed, they require only...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_13', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'How the Byzantine General Sacked the Castle: A Look Into Blockchain. Medium. Available at:\\nhttps://m...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_0', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': '# **Blockchain for** **beginners- basic** **guiding principles**  \\n**Blockchain for beginners**...'}]\n---\n[{'content': '## **1 Introduction to Blockchain**  \\n##### **1.1 What is Blockchain: Definition and Basics**  \\n**Centralization** is a fundamental aspect of today\u2019s record-keeping systems, where a single entity, such as a\\nbank or land registry, can control transaction records and data. This centralized structure is so ingrained in our\\nsocietal operations that it often goes unquestioned, managing everything from financial transactions and\\nproperty ownership to personal medical records and national IDs. However, reliance on a central authority\\nraises concerns about trustworthiness, given the risks of corruption, hacking, and business failures. Central\\nrecord-keepers also function as gatekeepers, deciding who can access and transact within these systems,\\nthus wielding considerable power over participation and data accessibility.  \\nIn contrast, **decentralized systems** eliminate the need for gatekeepers and the vulnerabilities of single points\\nof failure. Such systems offer a robust alternative by allowing parties to interact peer-to-peer without an\\nintermediary. Notable examples include the Internet, which enables global, decentralized communication, and\\n**blockchain networks** like Bitcoin, which eases trustless financial transactions. These decentralized platforms\\ndemonstrate the potential for secure, peer-to-peer interactions, even among parties who do not know or\\ninherently trust one another, marking a significant shift from the traditional, centralized paradig",
+        "retrieved_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_0",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_6",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_13"
+        ]
+      },
+      "reference": {
+        "test_id": "bc-004-mining",
+        "category": "blockchain",
+        "difficulty": "medium",
+        "question_type": "conceptual",
+        "expected_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_5",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_6"
+        ],
+        "reference_answer": "Mining is the validation process where transactions are grouped into blocks. It takes computing effort to prove blocks, and once confirmed, they're easy to verify. Mining generates new bitcoins and builds trust by ensuring transactions are confirmed with significant computational work."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What is decentralization in blockchain?"
+      },
+      "outputs": {
+        "answer": "Decentralization in blockchain refers to a paradigm shift from centralized systems, where power and control are concentrated in the hands of a single entity. In contrast, decentralization distributes this power across a network, enhancing security and promoting transparency.\n\nThe key concepts of decentralization include:\n\n- **Enhanced Security**: There is no central point of failure or control, making it harder for malicious actors to manipulate the system.\n- **Transparency**: All participants in the network can see the transactions and data stored on the blockchain, ensuring that everyone has access to the same information.\n\nA practical example of how decentralization works on blockchain is Bitcoin. Unlike traditional financial systems controlled by central banks, Bitcoin operates through a global network of nodes that verify transactions without relying on any single authority. This ensures that no single entity can manipulate the system or alter transaction records.\n\nWould you like more detailed information on specific aspects of decentralization in blockchain?",
+        "retrieved_docs": "[{'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_7', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': '## **2 Understanding the Fundamentals**  \\n##### **2.1 How does Blockchain work** **2.1.1. Decentrali...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_7', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'are paramount.  \\nThe key concepts of decentralization include:  \\nPage 10 | 33  \\n**Blockchain for beg...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_4', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'Page 3 | 33  \\n**Blockchain for beginners**  \\n**REFERENCES .............................................'}]\n---\n[{'content': \"## **2 Understanding the Fundamentals**  \\n##### **2.1 How does Blockchain work** **2.1.1. Decentralization**  \\nBlockchain decentralization is a \u201cparadigm shift\u201d from centralized systems. It distributes power and control\\nacross a network, enhances security, and promotes transparency. This technology has far-reaching\\nimplications beyond cryptocurrencies, including supply chain, healthcare, and more, where trust and security\\nare paramount.  \\nThe key concepts of decentralization include:  \\nPage 10 | 33  \\n**Blockchain for beginners**  \\n_**Figure 1: The Key concepts of decentralization**_  \\nA practical example of how decentralization works on blockchain is Bitcoin (see previous section). Bitcoin is a\\ndigital currency built on blockchain. There is no central bank controlling it; instead, transactions are verified by\\na global network of nodes, making it decentralized.  \\n##### **2.1.2. Cryptography**  \\nTo grasp what Cryptography entails, think of it as a tamper-proof seal on a jar. If the seal is broken (akin to the\\ncryptographic rules being violated), the contents of the jar might have been tampered with. Just like how the\\nseal protects the jar, cryptography protects the information on the blockchain.  \\nWhen we discuss blockchain cryptography, this entails the following components:  \\n**Digital Signatures:** the purpose of digital signatures is to ensure security and authenticity. To achieve this,\\nwhen a user makes a transaction, they sign it with thei",
+        "retrieved_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_7",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_4"
+        ]
+      },
+      "reference": {
+        "test_id": "bc-003-decentralization",
+        "category": "blockchain",
+        "difficulty": "easy",
+        "question_type": "factual",
+        "expected_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_5",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_7"
+        ],
+        "reference_answer": "Decentralization eliminates the need for gatekeepers and single points of failure. It distributes power and control across a network, enhances security, and promotes transparency without central authority."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What is Bitcoin?"
+      },
+      "outputs": {
+        "answer": "Bitcoin is a globally recognized cryptocurrency that exemplifies the transformative power of blockchain technology. It was created in 2009 by an individual or group using the pseudonym Satoshi Nakamoto, as described in the seminal Bitcoin white paper released that year.\n\nThe trust system in Bitcoin relies on computing power. Transactions are grouped into blocks and confirmed through a process known as mining. Mining generates new bitcoins and builds trust by ensuring transactions are only confirmed if significant computational work has been done to validate them. This validation process is crucial for maintaining the integrity of the blockchain network.\n\nBitcoin's journey began with its official existence in 2009, marked by the first transaction involving two pizzas for 10,000 BTC. Over time, Bitcoin has evolved significantly, experiencing several halving events where the reward for mining a new block was reduced. Its value has fluctuated dramatically, reaching an all-time high of $69,000 in November 2021 before falling to below $16,000 by early 2023.\n\nDespite its volatility, Bitcoin remains a testament to the potential of blockchain technology for secure and decentralized financial transactions.",
+        "retrieved_docs": "[{'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_6', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'a globally recognized cryptocurrency, Bitcoin exemplifies the transformative power of blockchain....'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_6', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': '10,000 BTC. At that time, the value of those Bitcoins was about $41. This year also witnessed the la...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_6', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'represents the first and most renowned application of blockchain technology, specifically within the...'}]\n---\n[{'content': '## **1 Introduction to Blockchain**  \\n##### **1.1 What is Blockchain: Definition and Basics**  \\n**Centralization** is a fundamental aspect of today\u2019s record-keeping systems, where a single entity, such as a\\nbank or land registry, can control transaction records and data. This centralized structure is so ingrained in our\\nsocietal operations that it often goes unquestioned, managing everything from financial transactions and\\nproperty ownership to personal medical records and national IDs. However, reliance on a central authority\\nraises concerns about trustworthiness, given the risks of corruption, hacking, and business failures. Central\\nrecord-keepers also function as gatekeepers, deciding who can access and transact within these systems,\\nthus wielding considerable power over participation and data accessibility.  \\nIn contrast, **decentralized systems** eliminate the need for gatekeepers and the vulnerabilities of single points\\nof failure. Such systems offer a robust alternative by allowing parties to interact peer-to-peer without an\\nintermediary. Notable examples include the Internet, which enables global, decentralized communication, and\\n**blockchain networks** like Bitcoin, which eases trustless financial transactions. These decentralized platforms\\ndemonstrate the potential for secure, peer-to-peer interactions, even among parties who do not know or\\ninherently trust one another, marking a significant shift from the traditional, centralized paradig",
+        "retrieved_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_6"
+        ]
+      },
+      "reference": {
+        "test_id": "bc-002-what-is-bitcoin",
+        "category": "blockchain",
+        "difficulty": "easy",
+        "question_type": "factual",
+        "expected_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_5",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_6"
+        ],
+        "reference_answer": "Bitcoin is the first and most renowned cryptocurrency, representing the first application of blockchain technology in financial services. It was created by Satoshi Nakamoto in 2009."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What is blockchain?"
+      },
+      "outputs": {
+        "answer": "",
+        "retrieved_docs": "[{'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_6', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': '## **1 Introduction to Blockchain**  \\n##### **1.1 What is Blockchain: Definition and Basics**  \\n**Ce...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_8', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': 'features of both worlds to cater to specific business needs. For example, a hybrid blockchain might ...'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_5', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': '## **A-Z Glossary of Blockchain Terms**  \\n**Bitcoin:** A cryptocurrency, the first and most renowned...'}]\n---\n[{'content': '## **1 Introduction to Blockchain**  \\n##### **1.1 What is Blockchain: Definition and Basics**  \\n**Centralization** is a fundamental aspect of today\u2019s record-keeping systems, where a single entity, such as a\\nbank or land registry, can control transaction records and data. This centralized structure is so ingrained in our\\nsocietal operations that it often goes unquestioned, managing everything from financial transactions and\\nproperty ownership to personal medical records and national IDs. However, reliance on a central authority\\nraises concerns about trustworthiness, given the risks of corruption, hacking, and business failures. Central\\nrecord-keepers also function as gatekeepers, deciding who can access and transact within these systems,\\nthus wielding considerable power over participation and data accessibility.  \\nIn contrast, **decentralized systems** eliminate the need for gatekeepers and the vulnerabilities of single points\\nof failure. Such systems offer a robust alternative by allowing parties to interact peer-to-peer without an\\nintermediary. Notable examples include the Internet, which enables global, decentralized communication, and\\n**blockchain networks** like Bitcoin, which eases trustless financial transactions. These decentralized platforms\\ndemonstrate the potential for secure, peer-to-peer interactions, even among parties who do not know or\\ninherently trust one another, marking a significant shift from the traditional, centralized paradig",
+        "retrieved_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_5",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_6",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_8"
+        ]
+      },
+      "reference": {
+        "test_id": "bc-001-what-is-blockchain",
+        "category": "blockchain",
+        "difficulty": "easy",
+        "question_type": "factual",
+        "expected_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_5",
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_6"
+        ],
+        "reference_answer": "Blockchain is a tamper-proof, shared digital ledger that records transactions in a decentralized peer-to-peer network. It permanently stores the history of asset exchanges between participants in the network."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What's the difference between JavaScript and Java?"
+      },
+      "outputs": {
+        "answer": "Based on the documents, here's a summary of the differences between JavaScript and Java:\n\n- **Name Origin**: JavaScript was originally called LiveScript but was renamed to JavaScript by Netscape due to the popularity generated by Java. This is one key difference in their names.\n\n- **Purpose and Use**: \n  - **JavaScript** is primarily used for creating dynamic web pages, allowing interaction with users through client-side scripting.\n  - **Java**, on the other hand, is a general-purpose programming language designed for creating network-centric applications that can run on any platform (thanks to its \"write once, run anywhere\" principle).\n\n- **Language Characteristics**: \n  - JavaScript is an interpreted, lightweight, and dynamic language. It's often used in conjunction with HTML and CSS.\n  - Java is a compiled, statically typed language known for its robustness and performance.\n\nBoth languages are complementary and can be integrated together to create more complex web applications. However, they serve different purposes and have distinct characteristics that make them suitable for various types of development tasks.",
+        "retrieved_docs": "[{'parent_id': 'javascript_tutorial_parent_6', 'source': 'javascript_tutorial.pdf', 'snippet': '## **What is JavaScript?**  \\nJavascript is a dynamic computer programming language. It is lightweigh...'}, {'parent_id': 'javascript_tutorial_parent_11', 'source': 'javascript_tutorial.pdf', 'snippet': '## **Where is JavaScript Today?**  \\nThe ECMAScript Edition 5 standard will be the first update to be...'}, {'parent_id': 'javascript_tutorial_parent_13', 'source': 'javascript_tutorial.pdf', 'snippet': '## **Semicolons are Optional**  \\nSimple statements in JavaScript are generally followed by a semicol...'}]\n---\n[{'content': '## **What is JavaScript?**  \\nJavascript is a dynamic computer programming language. It is lightweight and most\\ncommonly used as a part of web pages, whose implementations allow client-side\\nscript to interact with the user and make dynamic pages. It is an interpreted\\nprogramming language with object-oriented capabilities.  \\nJavaScript was first known as **LiveScript**, but Netscape changed its name to\\nJavaScript, possibly because of the excitement being generated by Java. JavaScript\\nmade its first appearance in Netscape 2.0 in 1995 with the name **LiveScript** . The\\ngeneral-purpose core of the language has been embedded in Netscape, Internet\\nExplorer, and other web browsers.  \\nThe [ECMA-262 Specification defined a standard version of the core JavaScript](http://www.ecma-international.org/publications/index.html)\\nlanguage.  \\n- JavaScript is a lightweight, interpreted programming language.  \\n- Designed for creating network-centric applications.  \\n- Complementary to and integrated with Java.  \\n- Complementary to and integrated with HTML.  \\n- Open and cross-platform.', 'parent_id': 'javascript_tutorial_parent_6', 'metadata': {'H1': '**Part 1: JavaScript Basics**', 'H2': '**What is JavaScript?**', 'parent_id': 'javascript_tutorial_parent_6', 'source': 'javascript_tutorial.pdf'}}, {'content': \"## **Where is JavaScript Today?**  \\nThe ECMAScript Edition 5 standard will be the first update to be released in over four\\nyears. JavaScript 2.0 conforms to Edi",
+        "retrieved_chunks": [
+          "javascript_tutorial_parent_6",
+          "javascript_tutorial_parent_11",
+          "javascript_tutorial_parent_13"
+        ]
+      },
+      "reference": {
+        "test_id": "js-008-vs-java",
+        "category": "javascript",
+        "difficulty": "hard",
+        "question_type": "comparison",
+        "expected_chunks": [
+          "javascript_tutorial_parent_6"
+        ],
+        "reference_answer": "JavaScript is a lightweight, interpreted language for web pages, while Java is a full programming language. JavaScript is complementary to and integrated with Java and HTML, but they are different languages."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "How do I install it?"
+      },
+      "outputs": {
+        "answer": "Based on the provided table of contents, here is a summary of the structure and content:\n\n1. The document starts with a copyright and disclaimer page.\n\n2. It then has an introduction to JavaScript, covering:\n   - What is JavaScript?\n   - Why learn JavaScript?\n   - Where do we use it?\n\n3. Next, there's a table of contents that lists all sections in the tutorial.\n\n4. The main body of the tutorial covers:\n\n   - Basic Concepts (10 chapters)\n     - Variables and Data Types\n     - Operators\n     - Decision Making\n     - Loops\n     - Functions\n     - Arrays\n     - Objects\n     - Regular Expressions\n     - Date and Time\n     - Error Handling\n\n   - Advanced Topics (5 chapters)\n     - Errors and Exceptions\n     - Form Validation\n     - Animation\n     - Multimedia\n     - Debugging\n\n   - Browser Support (2 chapters)\n     - Image Maps\n     - Browsers\n\n5. The tutorial also includes information on:\n   - Regular Expressions\n   - DOM (Document Object Model) in 3 parts\n   - Math and RegExp objects\n   - Animation techniques\n   - Multimedia handling\n   - Debugging methods\n   - Browser detection and compatibility\n\nThis structure provides a comprehensive guide from basic JavaScript concepts to advanced topics, with practical examples like form validation, animations, and debugging.",
+        "retrieved_docs": "[{'parent_id': 'javascript_tutorial_parent_4', 'source': 'javascript_tutorial.pdf', 'snippet': 'Syntax Errors..........................................................................................'}, {'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_0', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf', 'snippet': '# **Blockchain for** **beginners- basic** **guiding principles**  \\n**Blockchain for beginners**...'}, {'parent_id': 'javascript_tutorial_parent_3', 'source': 'javascript_tutorial.pdf', 'snippet': 'We strive to update the contents of our website and tutorials as timely and as\\nprecisely as possible...'}]\n---\n[{'content': '# **Blockchain for** **beginners- basic** **guiding principles**  \\n**Blockchain for beginners**', 'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_0', 'metadata': {'H1': '**Blockchain for** **beginners- basic** **guiding principles**', 'parent_id': 'Blockchain_For_Beginners_A_EUBOF_Guide_parent_0', 'source': 'Blockchain_For_Beginners_A_EUBOF_Guide.pdf'}}, {'content': '## **Table of Contents**  \\nAbout the Tutorial .............................................................................................................................................\\nAudience ........................................................................................................................................................... i\\nPrerequisites ..................................................................................................................................................... i\\nCopyright and Disclaimer ................................................................................................................................. i\\nTable of Contents ............................................................................................................................................ ii  \\nPART 1: JAVASCRIPT BASICS ........................................................................................................ 1  \\n**1.** **JAVASCRIPT \u2013 Overview ........................................................................................",
+        "retrieved_chunks": [
+          "Blockchain_For_Beginners_A_EUBOF_Guide_parent_0",
+          "javascript_tutorial_parent_4",
+          "javascript_tutorial_parent_3"
+        ]
+      },
+      "reference": {
+        "test_id": "js-007-install-followup",
+        "category": "javascript",
+        "difficulty": "hard",
+        "question_type": "follow-up",
+        "expected_chunks": [
+          "javascript_tutorial_parent_10",
+          "javascript_tutorial_parent_6"
+        ],
+        "reference_answer": "JavaScript doesn't require installation as it runs in web browsers. You only need a text editor to write code and a browser to run it."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "How do I enable JavaScript in Chrome?"
+      },
+      "outputs": {
+        "answer": "To enable JavaScript in Google Chrome, follow these steps:\n\n- Click the Chrome menu at the top right-hand corner of your browser.\n- Select **Settings**.\n- Click **Show advanced settings** at the end of the page.\n- Under the **Privacy** section, click the Content settings button.\n- In the \"JavaScript\" section, select \"Allow all sites to run JavaScript (recommended)\".\n\nThis will enable JavaScript in Chrome. If you want to disable it, choose \"Do not allow any site to run JavaScript\" instead.",
+        "retrieved_docs": "[{'parent_id': 'javascript_tutorial_parent_18', 'source': 'javascript_tutorial.pdf', 'snippet': '## **JavaScript in Chrome**  \\nHere are the steps to turn on or turn off JavaScript in Chrome:  \\n- Cl...'}, {'parent_id': 'javascript_tutorial_parent_17', 'source': 'javascript_tutorial.pdf', 'snippet': '- There you will find the option to enable or disable javascript by right-clicking\\non the value of t...'}, {'parent_id': 'javascript_tutorial_parent_15', 'source': 'javascript_tutorial.pdf', 'snippet': '<!-\\n// This is a comment. It is similar to comments in C++\\n\\n/*\\n\\n* This is a multiline comment in Jav...'}]\n---\n[{'content': '## **JavaScript in Firefox**  \\nHere are the steps to turn on or turn off JavaScript in Firefox:  \\n- Open a new tab -> type **about: config** in the address bar.  \\n- Then you will find the warning dialog. Select **I\u2019ll be careful, I promise!**  \\n- Then you will find the list of **configure** **options** in the browser.  \\n- In the search bar, type **javascript.enabled** .  \\n- There you will find the option to enable or disable javascript by right-clicking\\non the value of that option -> **select toggle** .  \\nIf javascript.enabled is true; it converts to false upon clicking **toogle** . If javascript is\\ndisabled; it gets enabled upon clicking toggle.  \\n**18**', 'parent_id': 'javascript_tutorial_parent_17', 'metadata': {'H1': '2.JAVASCRIPT \u2013 SYNTAX', 'H2': '**JavaScript in Firefox**', 'parent_id': 'javascript_tutorial_parent_17', 'source': 'javascript_tutorial.pdf'}}, {'content': '## **JavaScript in Chrome**  \\nHere are the steps to turn on or turn off JavaScript in Chrome:  \\n- Click the Chrome menu at the top right hand corner of your browser.  \\n- Select **Settings** .  \\n- Click **Show advanced settings** at the end of the page.  \\n- Under the **Privacy** section, click the Content settings button.  \\n- In the \"Javascript\" section, select \"Do not allow any site to run JavaScript\"\\nor \"Allow all sites to run JavaScript (recommended)\".', 'parent_id': 'javascript_tutorial_parent_18', 'metadata': {'H1': '2.JAVASCRIPT \u2013 SYNTAX', 'H2': '**JavaScript in Chrome",
+        "retrieved_chunks": [
+          "javascript_tutorial_parent_17",
+          "javascript_tutorial_parent_15",
+          "javascript_tutorial_parent_18"
+        ]
+      },
+      "reference": {
+        "test_id": "js-006-enable-chrome",
+        "category": "javascript",
+        "difficulty": "medium",
+        "question_type": "factual",
+        "expected_chunks": [
+          "javascript_tutorial_parent_18"
+        ],
+        "reference_answer": "In Chrome: Click Chrome menu > Settings > Show advanced settings > Privacy section > Content settings > JavaScript section > Select 'Allow all sites to run JavaScript'."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "How do comments work in JavaScript?"
+      },
+      "outputs": {
+        "answer": "In JavaScript, comments can be written using two main styles:\n\n- **Single-line Comments**: Any text between a `//` and the end of a line is treated as a comment and ignored by JavaScript.\n  \n- **Multi-line Comments**: Any text between the characters `/*` and `*/` is treated as a comment. This type of comment can span multiple lines.\n\nAdditionally, JavaScript also recognizes the HTML comment opening sequence `<!--`. However, it treats this as a single-line comment just like the `//` style. The HTML comment closing sequence `-->` should be written as `//-->` to avoid confusion with multi-line comments.\n\nHere is an example of how you can use these types of comments in JavaScript:\n\n```html\n<script language=\"javascript\" type=\"text/javascript\">\n\n<!-\n// This is a comment. It is similar to comments in C++\n\n/*\n* This is a multiline comment in JavaScript\n* It is very similar to comments in C Programming\n*/\n\n//-->\n\n</script>\n```\n\nAll modern browsers come with built-in support for JavaScript, but you may need to enable or disable this support manually depending on your browser.",
+        "retrieved_docs": "[{'parent_id': 'javascript_tutorial_parent_15', 'source': 'javascript_tutorial.pdf', 'snippet': '## **Comments in JavaScript**  \\nJavaScript supports both C-style and C++-style comments. Thus:  \\n- A...'}, {'parent_id': 'javascript_tutorial_parent_15', 'source': 'javascript_tutorial.pdf', 'snippet': 'JavaScript treats this as a single-line comment, just as it does the // comment.  \\n- The HTML commen...'}, {'parent_id': 'javascript_tutorial_parent_15', 'source': 'javascript_tutorial.pdf', 'snippet': '<!-\\n// This is a comment. It is similar to comments in C++\\n\\n/*\\n\\n* This is a multiline comment in Jav...'}]\n---\n[{'content': '## **Comments in JavaScript**  \\nJavaScript supports both C-style and C++-style comments. Thus:  \\n- Any text between a // and the end of a line is treated as a comment and is\\nignored by JavaScript.  \\n- Any text between the characters /* and */ is treated as a comment. This may\\nspan multiple lines.  \\n**16**  \\n- JavaScript also recognizes the HTML comment opening sequence <!--.\\nJavaScript treats this as a single-line comment, just as it does the // comment.  \\n- The HTML comment closing sequence --> is not recognized by JavaScript so it\\nshould be written as //-->.  \\n**Example**  \\nThe following example shows how to use comments in JavaScript.  \\n```\\n<script language=\"javascript\" type=\"text/javascript\">\\n\\n<!-\\n// This is a comment. It is similar to comments in C++\\n\\n/*\\n\\n* This is a multiline comment in JavaScript\\n\\n* It is very similar to comments in C Programming\\n\\n*/\\n\\n//-->\\n\\n</script>\\n\\n```  \\n**17**  \\nAll the modern browsers come with built-in support for JavaScript. Frequently, you\\nmay need to enable or disable this support manually. This chapter explains the\\nprocedure of enabling and disabling JavaScript support in your browsers: Internet\\nExplorer, Firefox, chrome, and Opera.', 'parent_id': 'javascript_tutorial_parent_15', 'metadata': {'H1': '2.JAVASCRIPT \u2013 SYNTAX', 'H2': '**Comments in JavaScript**', 'parent_id': 'javascript_tutorial_parent_15', 'source': 'javascript_tutorial.pdf'}}]",
+        "retrieved_chunks": [
+          "javascript_tutorial_parent_15"
+        ]
+      },
+      "reference": {
+        "test_id": "js-005-comments",
+        "category": "javascript",
+        "difficulty": "medium",
+        "question_type": "conceptual",
+        "expected_chunks": [
+          "javascript_tutorial_parent_15"
+        ],
+        "reference_answer": "JavaScript supports single-line comments with // and multi-line comments with /* */. It also recognizes HTML comment opening <!-- but requires //-- for closing."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "How do I write my first JavaScript code?"
+      },
+      "outputs": {
+        "answer": "To write your first JavaScript code, you need to follow these steps:\n\n1. **Place the `<script>` Tags**: You can place the `<script>` tags anywhere within your web page, but it is recommended that you keep them within the `<head>` tags for better performance.\n\n2. **Syntax of Your JavaScript Code**:\n   ```html\n   <script language=\"javascript\" type=\"text/javascript\">\n   \n   // Your JavaScript code here\n   \n   </script>\n   ```\n\n3. **Your First JavaScript Code Example**: Let's take a sample example to print out \"Hello World\". We can add an optional HTML comment that surrounds our JavaScript code:\n   ```html\n   <html>\n   \n   <body>\n   \n   <script language=\"javascript\" type=\"text/javascript\">\n   \n   <!--\n   document.write(\"Hello World!\");\n   \n   //-->\n   \n   </script>\n   \n   </body>\n   \n   </html>\n   ```\n\nWhen you run this code, it will produce the following result:\n```\nHello World!\n```\n\nThis is a simple way to get started with JavaScript. You can explore more complex examples and functionalities as you progress in your learning journey!",
+        "retrieved_docs": "[{'parent_id': 'javascript_tutorial_parent_12', 'source': 'javascript_tutorial.pdf', 'snippet': 'JavaScript code\\n\\n</script>\\n\\n## **Your First JavaScript Code**...'}, {'parent_id': 'javascript_tutorial_parent_12', 'source': 'javascript_tutorial.pdf', 'snippet': '```  \\nLet us take a sample example to print out \"Hello World\". We added an optional HTML\\ncomment tha...'}, {'parent_id': 'javascript_tutorial_parent_12', 'source': 'javascript_tutorial.pdf', 'snippet': 'JavaScript code\\n\\n</script>...'}]\n---\n[{'content': '# 2.JAVASCRIPT \u2013 SYNTAX  \\nJavaScript can be implemented using JavaScript statements that are placed within\\nthe **<script>... </script>** HTML tags in a web page.  \\nYou can place the **<script>** tags, containing your JavaScript, anywhere within you\\nweb page, but it is normally recommended that you should keep it within the **<head>**\\ntags.  \\nThe <script> tag alerts the browser program to start interpreting all the text between\\nthese tags as a script. A simple syntax of your JavaScript will appear as follows.  \\n```\\n<script ...>\\n\\nJavaScript code\\n\\n</script>\\n\\n```  \\nThe script tag takes two important attributes:  \\n- **Language:** This attribute specifies what scripting language you are using.\\nTypically, its value will be javascript. Although recent versions of HTML (and\\nXHTML, its successor) have phased out the use of this attribute.  \\n- **Type:** This attribute is what is now recommended to indicate the scripting\\nlanguage in use and its value should be set to \"text/javascript\".  \\nSo your JavaScript syntax will look as follows.  \\n```\\n<script language=\"javascript\" type=\"text/javascript\">\\n\\nJavaScript code\\n\\n</script>\\n\\n## **Your First JavaScript Code**\\n\\n```  \\nLet us take a sample example to print out \"Hello World\". We added an optional HTML\\ncomment that surrounds our JavaScript code. This is to save our code from a browser\\nthat does not support JavaScript. The comment ends with a \"//-->\". Here \"//\"\\nsignifies a comment in JavaScript, so",
+        "retrieved_chunks": [
+          "javascript_tutorial_parent_12"
+        ]
+      },
+      "reference": {
+        "test_id": "js-004-first-code",
+        "category": "javascript",
+        "difficulty": "medium",
+        "question_type": "conceptual",
+        "expected_chunks": [
+          "javascript_tutorial_parent_12"
+        ],
+        "reference_answer": "Place JavaScript code within <script>...</script> tags in HTML. Use document.write() to output text. Example: <script type='text/javascript'>document.write('Hello World!')</script>"
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What development tools can I use for JavaScript?"
+      },
+      "outputs": {
+        "answer": "Based on the provided content, here are some key points about **JavaScript Development Tools**:\n\n### JavaScript Development Tools\n\nOne of the major strengths of JavaScript is that it does not require expensive development tools. You can start with a simple text editor such as Notepad since it is an interpreted language inside the context of a web browser and you don't need to buy a compiler.\n\nTo make your life simpler, various vendors have developed very nice JavaScript editing tools. Some popular options include:\n\n1. **Microsoft FrontPage**:\n   - Developed by Microsoft.\n   - Provides HTML editors and a number of JavaScript tools for creating interactive websites.\n\n2. **Macromedia Dreamweaver MX**:\n   - A highly popular HTML and JavaScript editor among professional web developers.\n   - Offers several prebuilt JavaScript components, integrates well with databases, and conforms to new standards such as XHTML and XML.\n\n3. **Macromedia HomeSite 5**:\n   - An HTML and JavaScript editor from Macromedia that is widely used for managing personal websites effectively.\n\nThese tools can significantly enhance your development process by providing features like code completion, debugging support, and integration with other web technologies.",
+        "retrieved_docs": "[{'parent_id': 'javascript_tutorial_parent_10', 'source': 'javascript_tutorial.pdf', 'snippet': '## **JavaScript Development Tools**  \\nOne of major strengths of JavaScript is that it does not requi...'}, {'parent_id': 'javascript_tutorial_parent_4', 'source': 'javascript_tutorial.pdf', 'snippet': 'JavaScript Development Tools...........................................................................'}, {'parent_id': 'javascript_tutorial_parent_10', 'source': 'javascript_tutorial.pdf', 'snippet': 'editing tools. Some of them are listed here:  \\n- **Microsoft FrontPage:** Microsoft has developed a ...'}]\n---\n[{'content': '## **Table of Contents**  \\nAbout the Tutorial .............................................................................................................................................\\nAudience ........................................................................................................................................................... i\\nPrerequisites ..................................................................................................................................................... i\\nCopyright and Disclaimer ................................................................................................................................. i\\nTable of Contents ............................................................................................................................................ ii  \\nPART 1: JAVASCRIPT BASICS ........................................................................................................ 1  \\n**1.** **JAVASCRIPT \u2013 Overview ............................................................................................................................ 2**  \\nWhat is JavaScript? .......................................................................................................................................... 2\\nClient-Side JavaScript....................................................................................................................................... 2\\nAdvantages of Ja",
+        "retrieved_chunks": [
+          "javascript_tutorial_parent_4",
+          "javascript_tutorial_parent_10"
+        ]
+      },
+      "reference": {
+        "test_id": "js-003-dev-tools",
+        "category": "javascript",
+        "difficulty": "easy",
+        "question_type": "factual",
+        "expected_chunks": [
+          "javascript_tutorial_parent_10"
+        ],
+        "reference_answer": "JavaScript development tools include: simple text editors like Notepad, Microsoft FrontPage, Macromedia Dreamweaver MX, and Macromedia HomeSite 5. Since JavaScript is interpreted in the browser, you don't need a compiler."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What are the advantages of JavaScript?"
+      },
+      "outputs": {
+        "answer": "Based on the provided content, here are some key points about JavaScript and its advantages:\n\n### Advantages of JavaScript\n\n1. **Less Server Interaction:**\n   - You can validate user input before sending the page off to the server.\n   - This saves server traffic, reducing the load on your server.\n\n2. **Immediate Feedback to Visitors:**\n   - Users don't have to wait for a page reload to see if they have forgotten to enter something.\n   - Provides instant feedback and improves user experience.\n\n3. **Increased Interactivity:**\n   - You can create interfaces that react when the user hovers over them with a mouse or activates them via the keyboard.\n   - Enhances user engagement by making web pages more responsive.\n\n4. **Richer Interfaces:**\n   - JavaScript allows you to include interactive elements like drag-and-drop components and sliders, providing a richer interface for your site visitors.\n   - Adds dynamic features that can significantly enhance the functionality of web applications.\n\n### Client-Side JavaScript\n\n1. **Execution Context:**\n   - The script should be included in or referenced by an HTML document for the code to be interpreted by the browser.\n   - This means that a web page need not be static; it can include programs that interact with the user, control the browser, and dynamically create HTML content.\n\n2. **Dynamic Content Generation:**\n   - Client-side JavaScript allows you to generate dynamic HTML content on the fly, enhancing interactivity without requiring server interaction.\n   - For example, you might use JavaScript to check if a user has entered a valid email address in a form field before submitting it.\n\n3. **Event Handling:**\n   - JavaScript can be used to trap user-initiated events such as button clicks, link navigation, and other actions that the user initiates explicitly or implicitly.\n   - This enables you to create responsive web applications where user interactions trigger specific behaviors or updates on the page.\n\nThese points highlight how JavaScript enhances the functionality and interactivity of web pages, making them more dynamic and engaging for users.",
+        "retrieved_docs": "[{'parent_id': 'javascript_tutorial_parent_7', 'source': 'javascript_tutorial.pdf', 'snippet': 'The JavaScript client-side mechanism provides many advantages over traditional CGI\\nserver-side scrip...'}, {'parent_id': 'javascript_tutorial_parent_4', 'source': 'javascript_tutorial.pdf', 'snippet': 'Client-Side JavaScript.................................................................................'}, {'parent_id': 'javascript_tutorial_parent_8', 'source': 'javascript_tutorial.pdf', 'snippet': '## **Advantages of JavaScript**  \\nThe merits of using JavaScript are:  \\n- **Less server interaction:...'}]\n---\n[{'content': '## **Table of Contents**  \\nAbout the Tutorial .............................................................................................................................................\\nAudience ........................................................................................................................................................... i\\nPrerequisites ..................................................................................................................................................... i\\nCopyright and Disclaimer ................................................................................................................................. i\\nTable of Contents ............................................................................................................................................ ii  \\nPART 1: JAVASCRIPT BASICS ........................................................................................................ 1  \\n**1.** **JAVASCRIPT \u2013 Overview ............................................................................................................................ 2**  \\nWhat is JavaScript? .......................................................................................................................................... 2\\nClient-Side JavaScript....................................................................................................................................... 2\\nAdvantages of Ja",
+        "retrieved_chunks": [
+          "javascript_tutorial_parent_4",
+          "javascript_tutorial_parent_8",
+          "javascript_tutorial_parent_7"
+        ]
+      },
+      "reference": {
+        "test_id": "js-002-advantages",
+        "category": "javascript",
+        "difficulty": "easy",
+        "question_type": "factual",
+        "expected_chunks": [
+          "javascript_tutorial_parent_8"
+        ],
+        "reference_answer": "JavaScript advantages include: less server interaction (validate input before sending to server), immediate feedback to visitors, increased interactivity with mouse/keyboard events, and richer interfaces with drag-and-drop and sliders."
+      },
+      "evaluations": {}
+    },
+    {
+      "inputs": {
+        "question": "What is JavaScript?"
+      },
+      "outputs": {
+        "answer": "JavaScript is a programming language that can be implemented using JavaScript statements placed within the `<script>` HTML tags in a web page. These tags alert the browser to interpret the text between them as a script.\n\nHere's an example of how you might write your first piece of JavaScript code:\n```html\n<script language=\"javascript\" type=\"text/javascript\">\n    // document.write (\"Hello World!\")\n</script>\n```\n\nThis snippet demonstrates that you can use spaces, tabs, and newlines freely in your program. The `document.write` function is used to output text into the HTML document.\n\nFor more complex interactions or when JavaScript needs to run on some event (like a user clicking somewhere), it's often placed within the `<head>` section of an HTML file:\n```html\n<head>\n    <script type=\"text/javascript\">\n        // function sayHello() { alert(\"Hello World\") }\n    </script>\n</head>\n<body>\n    Click here for the result\n    <input type=\"button\" onclick=\"sayHello()\" value=\"Say Hello\" />\n</body>\n```\n\nAlternatively, if you need a script to run as the page loads and generate content in the page, it can be placed within the `<body>` section:\n```html\n<body>\n    <script type=\"text/javascript\">\n        // document.write(\"Hello World\")\n    </script>\n    <p>This is web page body</p>\n</body>\n```\n\nThese examples illustrate how JavaScript integrates with HTML to create dynamic and interactive web pages.",
+        "retrieved_docs": "[{'parent_id': 'javascript_tutorial_parent_12', 'source': 'javascript_tutorial.pdf', 'snippet': 'JavaScript code\\n\\n</script>...'}, {'parent_id': 'javascript_tutorial_parent_20', 'source': 'javascript_tutorial.pdf', 'snippet': '<body>\\n\\n<script language=\"javascript\" type=\"text/javascript\">\\n\\n<!-```\\n\\n~~**19**~~\\n\\n\\n```\\ndocument.wri...'}, {'parent_id': 'javascript_tutorial_parent_12', 'source': 'javascript_tutorial.pdf', 'snippet': 'JavaScript code\\n\\n</script>\\n\\n## **Your First JavaScript Code**...'}]\n---\n[{'content': '# 2.JAVASCRIPT \u2013 SYNTAX  \\nJavaScript can be implemented using JavaScript statements that are placed within\\nthe **<script>... </script>** HTML tags in a web page.  \\nYou can place the **<script>** tags, containing your JavaScript, anywhere within you\\nweb page, but it is normally recommended that you should keep it within the **<head>**\\ntags.  \\nThe <script> tag alerts the browser program to start interpreting all the text between\\nthese tags as a script. A simple syntax of your JavaScript will appear as follows.  \\n```\\n<script ...>\\n\\nJavaScript code\\n\\n</script>\\n\\n```  \\nThe script tag takes two important attributes:  \\n- **Language:** This attribute specifies what scripting language you are using.\\nTypically, its value will be javascript. Although recent versions of HTML (and\\nXHTML, its successor) have phased out the use of this attribute.  \\n- **Type:** This attribute is what is now recommended to indicate the scripting\\nlanguage in use and its value should be set to \"text/javascript\".  \\nSo your JavaScript syntax will look as follows.  \\n```\\n<script language=\"javascript\" type=\"text/javascript\">\\n\\nJavaScript code\\n\\n</script>\\n\\n## **Your First JavaScript Code**\\n\\n```  \\nLet us take a sample example to print out \"Hello World\". We added an optional HTML\\ncomment that surrounds our JavaScript code. This is to save our code from a browser\\nthat does not support JavaScript. The comment ends with a \"//-->\". Here \"//\"\\nsignifies a comment in JavaScript, so",
+        "retrieved_chunks": [
+          "javascript_tutorial_parent_12",
+          "javascript_tutorial_parent_20"
+        ]
+      },
+      "reference": {
+        "test_id": "js-001-what-is-js",
+        "category": "javascript",
+        "difficulty": "easy",
+        "question_type": "factual",
+        "expected_chunks": [
+          "javascript_tutorial_parent_6"
+        ],
+        "reference_answer": "JavaScript is a dynamic, lightweight, interpreted programming language commonly used for creating interactive web pages. It was first known as LiveScript and made its first appearance in Netscape 2.0 in 1995."
+      },
+      "evaluations": {}
+    }
+  ]
+}

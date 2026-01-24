@@ -27,6 +27,53 @@ EXPERIMENTS = {
         "graph_var": "agent_graph",
         "tag": "opt-v2-strict-search",
         "version": "1.0"
+    },
+    "opt-v3-forced-search": {
+        "name": "Optimized V3 (Forced Search)",
+        "description": "Graph-enforced search - structurally impossible to skip search",
+        "module": "experiments.opt_v3_forced_search.graph",
+        "graph_var": "agent_graph",
+        "tag": "opt-v3-forced-search",
+        "version": "1.0"
+    },
+    "opt-v4-smart-retry": {
+        "name": "Optimized V4 (Smart Retry)",
+        "description": "Improved self-correction - doesn't over-trigger on valid 'out of scope' responses",
+        "module": "experiments.opt_v4_smart_retry.graph",
+        "graph_var": "agent_graph",
+        "tag": "opt-v4-smart-retry",
+        "version": "1.0"
+    },
+    "opt-v5-reliable-extraction": {
+        "name": "Optimized V5 (Reliable Extraction)",
+        "description": "Multi-query search + stronger LLM extraction - fixes missing answers",
+        "module": "experiments.opt_v5_reliable_extraction.graph",
+        "graph_var": "agent_graph",
+        "tag": "opt-v5-reliable-extraction",
+        "version": "1.0"
+    },
+    "opt-v6-fast-multiquery": {
+        "name": "Optimized V6 (Fast Multi-Query)",
+        "description": "Multi-query search + batched extraction - same accuracy as v5, 3x faster",
+        "module": "experiments.opt_v6_fast_multiquery.graph",
+        "graph_var": "agent_graph",
+        "tag": "opt-v6-fast-multiquery",
+        "version": "1.0"
+    },
+    "opt-v7-temperature-tuning": {
+        "name": "Optimized V7 (Temperature Tuning)",
+        "description": "Compare different temperature settings to find optimal config",
+        "module": "experiments.opt_v7_temperature_tuning.graph",
+        "graph_var": "agent_graph",
+        "tag": "opt-v7-temperature-tuning",
+        "version": "1.0",
+        "configs": {
+            "A": "llm=0.1, llm_small=0.0 (original strict)",
+            "B": "llm=0.3, llm_small=0.1 (recommended)",
+            "C": "llm=0.5, llm_small=0.2 (creative)",
+            "D": "llm=0.3, llm_small=0.3 (balanced)",
+            "E": "llm=0.7, llm_small=0.1 (creative main)"
+        }
     }
 }
 

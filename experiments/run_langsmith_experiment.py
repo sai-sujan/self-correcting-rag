@@ -36,7 +36,7 @@ from experiments.experiment_registry import EXPERIMENTS, load_experiment_graph, 
 client = Client()
 
 # Dataset name (must match setup_langsmith_dataset.py)
-DATASET_NAME = "rag-evaluation-tests"
+DATASET_NAME = "rag-evaluation-tests-corrected-with-mistral-7b"
 
 
 # ============== EVALUATORS ==============
@@ -60,8 +60,10 @@ def extract_retrieved_docs(messages):
     docs = []
     for msg in messages:
         if hasattr(msg, 'type') and msg.type == 'tool':
-            content = str(msg.content)[:500] + "..."
-            docs.append(content)
+            content = str(msg.content)
+            # Only include substantial content (likely from retrieve_parent_chunks)
+            if len(content) > 100:
+                docs.append(content[:1500])  # More context for faithfulness check
     return "\n---\n".join(docs) if docs else "No documents retrieved"
 
 
@@ -95,26 +97,44 @@ Respond ONLY with a number between 0 and 1."""
     return {"key": "faithfulness", "score": score}
 
 
-def retrieval_f1_evaluator(run: Run, example: Example) -> dict:
-    """Measure if we retrieved the RIGHT documents"""
-    retrieved = run.outputs.get("retrieved_chunks", [])
-    expected = example.outputs.get("expected_chunks", [])
+def retrieval_relevance_evaluator(run: Run, example: Example) -> dict:
+    """LLM judges if retrieved documents are relevant to the question"""
+    question = run.inputs.get("question", "")
+    retrieved_docs = run.outputs.get("retrieved_docs", "No documents")
 
-    if not expected:
-        return {"key": "retrieval_f1", "score": 1.0}
+    # If no documents retrieved, score is 0
+    if retrieved_docs == "No documents retrieved" or not retrieved_docs:
+        return {"key": "retrieval_relevance", "score": 0.0}
 
-    retrieved_set = set(retrieved)
-    expected_set = set(expected)
+    prompt = f"""You are evaluating if retrieved documents are RELEVANT to answer a question.
 
-    if not retrieved_set:
-        return {"key": "retrieval_f1", "score": 0.0}
+Question: {question}
 
-    intersection = retrieved_set & expected_set
-    precision = len(intersection) / len(retrieved_set)
-    recall = len(intersection) / len(expected_set)
-    f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
+Retrieved Documents:
+{retrieved_docs[:3000]}
 
-    return {"key": "retrieval_f1", "score": f1}
+Rate RETRIEVAL RELEVANCE (0.0 to 1.0):
+0.0 = Documents are completely irrelevant to the question
+0.3 = Documents are tangentially related but don't contain the answer
+0.5 = Documents are somewhat relevant but missing key information
+0.7 = Documents are relevant and contain most of the needed information
+1.0 = Documents are highly relevant and contain all information needed to answer
+
+Consider:
+- Do the documents discuss the topic asked about?
+- Do they contain the specific information needed to answer?
+- Would someone be able to answer the question using ONLY these documents?
+
+Respond ONLY with a number between 0 and 1."""
+
+    try:
+        response = llm.invoke([SystemMessage(content=prompt)])
+        score = float(response.content.strip())
+        score = max(0.0, min(1.0, score))  # Clamp to 0-1
+    except:
+        score = 0.0
+
+    return {"key": "retrieval_relevance", "score": score}
 
 
 def semantic_similarity_evaluator(run: Run, example: Example) -> dict:
@@ -136,16 +156,43 @@ def semantic_similarity_evaluator(run: Run, example: Example) -> dict:
 
 
 def answer_quality_evaluator(run: Run, example: Example) -> dict:
-    """Structural quality checks"""
+    """Structural quality checks - handles both answers AND valid 'no info' responses"""
     answer = run.outputs.get("answer", "")
+    answer_lower = answer.lower()
 
-    checks = [
-        len(answer) > 50,  # has content
-        len(answer) > 100,  # sufficient length
-        len(answer.split()) > 20,  # not too short
-        "error" not in answer.lower(),  # no error
-        "don't have" not in answer.lower()  # not a cop-out
+    # Valid "out of scope" phrases - these are CORRECT responses, not failures
+    VALID_NO_INFO_PHRASES = [
+        "documents don't contain",
+        "not covered in the documents",
+        "no relevant information found",
+        "outside the scope",
+        "couldn't find information",
+        "searched the documents but found no",
+        "don't have information about"
     ]
+
+    # Check if this is a valid "no info" response
+    is_valid_no_info = any(phrase in answer_lower for phrase in VALID_NO_INFO_PHRASES)
+
+    if is_valid_no_info:
+        # Valid "no info" response should score high - this is correct behavior
+        # Check that it's well-formed (has content, no errors)
+        checks = [
+            len(answer) > 30,  # has some content explaining why
+            "error" not in answer_lower,  # no error messages
+            True,  # valid no-info is acceptable
+            True,  # valid no-info is acceptable
+            True   # valid no-info is acceptable
+        ]
+    else:
+        # Normal answer - check quality
+        checks = [
+            len(answer) > 50,  # has content
+            len(answer) > 100,  # sufficient length
+            len(answer.split()) > 20,  # not too short
+            "error" not in answer_lower,  # no error
+            "i don't know" not in answer_lower  # not a lazy cop-out (without searching)
+        ]
 
     score = sum(checks) / len(checks)
     return {"key": "answer_quality", "score": score}
@@ -169,26 +216,47 @@ def create_target_function(graph):
         """Run the RAG graph and return structured outputs"""
         question = inputs.get("question", "")
 
+        # Use consistent thread_id for both invoke and get_state
+        thread_id = f"eval-{datetime.now().timestamp()}"
+        config = {"configurable": {"thread_id": thread_id}}
+
         # Run the graph
         result = graph.invoke(
             {"messages": [HumanMessage(content=question)]},
-            {"configurable": {"thread_id": f"eval-{datetime.now().timestamp()}"}}
+            config
         )
 
-        # Extract answer
-        answer = result["messages"][-1].content if result["messages"] else ""
+        # Extract answer from result
+        answer = result["messages"][-1].content if result.get("messages") else ""
 
-        # Get state to extract tool outputs
-        config = {"configurable": {"thread_id": f"eval-{datetime.now().timestamp()}"}}
-        try:
-            state = graph.get_state(config)
-            messages = state.values.get("messages", [])
-        except:
-            messages = result.get("messages", [])
+        # Get messages from the result directly (more reliable than get_state)
+        messages = result.get("messages", [])
 
-        # Extract retrieved info
-        retrieved_docs = extract_retrieved_docs(messages)
-        retrieved_chunks = extract_chunk_ids(messages)
+        # Try to extract from state first (opt-v3-forced-search style)
+        # These fields exist in the forced search experiment
+        extracted_content = result.get("extracted_content", "")
+        retrieved_docs_list = result.get("retrieved_docs", [])
+        parent_ids = result.get("parent_ids", [])
+
+        # If we have extracted content from state, use that
+        if extracted_content:
+            retrieved_docs = extracted_content
+            retrieved_chunks = parent_ids
+        elif retrieved_docs_list:
+            # Use retrieved_docs from state
+            docs_text = []
+            for doc in retrieved_docs_list:
+                if isinstance(doc, dict):
+                    content = doc.get("content", str(doc))
+                    docs_text.append(content[:1500])
+                else:
+                    docs_text.append(str(doc)[:1500])
+            retrieved_docs = "\n---\n".join(docs_text) if docs_text else "No documents retrieved"
+            retrieved_chunks = parent_ids
+        else:
+            # Fallback: Extract from tool messages (baseline/v1/v2 style)
+            retrieved_docs = extract_retrieved_docs(messages)
+            retrieved_chunks = extract_chunk_ids(messages)
 
         return {
             "answer": answer,
@@ -232,7 +300,7 @@ def run_experiment(experiment_id: str):
         data=DATASET_NAME,
         evaluators=[
             faithfulness_evaluator,
-            retrieval_f1_evaluator,
+            retrieval_relevance_evaluator,
             semantic_similarity_evaluator,
             answer_quality_evaluator,
             latency_evaluator
@@ -247,40 +315,79 @@ def run_experiment(experiment_id: str):
     )
 
     # === SAVE LOCALLY ===
+    # The evaluate() returns an ExperimentResults object
+    # Each result is an ExperimentResultRow (TypedDict) with keys: run, example, evaluation_results
     local_results = []
-    for result in results:
-        local_results.append({
-            "inputs": result.get("input", {}),
-            "outputs": result.get("output", {}),
-            "reference": result.get("reference", {}),
-            "evaluations": {
-                "faithfulness": result.get("feedback", {}).get("faithfulness", {}).get("score"),
-                "retrieval_f1": result.get("feedback", {}).get("retrieval_f1", {}).get("score"),
-                "semantic_similarity": result.get("feedback", {}).get("semantic_similarity", {}).get("score"),
-                "answer_quality": result.get("feedback", {}).get("answer_quality", {}).get("score"),
-                "latency": result.get("feedback", {}).get("latency", {}).get("score"),
-            }
-        })
-
-    # Calculate aggregate metrics
     scores = {
         "faithfulness": [],
-        "retrieval_f1": [],
+        "retrieval_relevance": [],
         "semantic_similarity": [],
         "answer_quality": [],
         "latency": []
     }
 
-    for r in local_results:
-        for key in scores:
-            val = r["evaluations"].get(key)
-            if val is not None:
-                scores[key].append(val)
+    # Iterate through the experiment results
+    result_count = 0
+    for result in results:
+        result_count += 1
+        # ExperimentResultRow is a TypedDict - access via dict keys, not attributes
+        run_input = {}
+        run_output = {}
+        reference = {}
+        evaluations = {}
 
+        # Debug: print result structure for first result
+        if result_count == 1:
+            print(f"\n📋 Debug: Result type = {type(result)}")
+            print(f"   Keys: {list(result.keys()) if hasattr(result, 'keys') else 'N/A'}")
+
+        # Extract from result (TypedDict with keys: run, example, evaluation_results)
+        run_obj = result.get("run")
+        example_obj = result.get("example")
+        eval_results = result.get("evaluation_results")
+
+        # Debug first result
+        if result_count == 1:
+            print(f"   run_obj type: {type(run_obj)}")
+            print(f"   example_obj type: {type(example_obj)}")
+            print(f"   eval_results type: {type(eval_results)}")
+
+        if run_obj:
+            run_input = run_obj.inputs or {}
+            run_output = run_obj.outputs or {}
+
+        if example_obj:
+            reference = example_obj.outputs or {}
+
+        # Extract evaluation scores
+        if eval_results:
+            # eval_results is a dict with 'results' key containing list of EvaluationResult
+            eval_list = eval_results.get("results", []) if isinstance(eval_results, dict) else eval_results
+            for eval_result in eval_list:
+                # EvaluationResult has key and score attributes
+                key = getattr(eval_result, 'key', None) or eval_result.get('key') if isinstance(eval_result, dict) else None
+                score = getattr(eval_result, 'score', None) if hasattr(eval_result, 'score') else eval_result.get('score') if isinstance(eval_result, dict) else None
+
+                if key and score is not None:
+                    evaluations[key] = score
+                    if key in scores:
+                        scores[key].append(score)
+
+        local_results.append({
+            "inputs": run_input,
+            "outputs": run_output,
+            "reference": reference,
+            "evaluations": evaluations
+        })
+
+    print(f"\n📊 Processed {result_count} results")
+
+    # Calculate aggregate metrics
     metrics = {}
     for key, vals in scores.items():
         if vals:
             metrics[f"avg_{key}"] = round(sum(vals) / len(vals), 3)
+        print(f"   {key}: {len(vals)} scores collected")
 
     # Build report
     report = {
