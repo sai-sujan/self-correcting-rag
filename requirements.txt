@@ -13,3 +13,6 @@ pymupdf4llm>=0.0.16
 gradio>=5.0.0
 portalocker
 python-dotenv
+langchain_ollama
+langchain_qdrant
+fastembed

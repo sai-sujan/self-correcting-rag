@@ -9,8 +9,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_community.callbacks import StreamlitCallbackHandler
 
-# Import strict v7 graph construction
-from experiments.opt_v7_temperature_tuning.graph import create_graph, set_temperatures
+# Import refactored core components
+from core.graph_builder import build_graph
+from core.experiment_config import DEFAULT_CONFIG
 
 # Page Configuration
 st.set_page_config(
@@ -87,13 +88,8 @@ if "thread_id" not in st.session_state:
     st.session_state.thread_id = f"user-{int(time.time())}"
 
 if "graph" not in st.session_state:
-    # Initialize graph with Config D (Winner)
-    # LLM=0.3, Small=0.3
-    # We call create_graph without arguments because set_temperatures handles the global state
-    # But wait, create_graph in v7 doesn't take arguments, it uses global state.
-    # We must explicitly set temperatures first.
-    set_temperatures(llm_temp=0.3, llm_small_temp=0.3, config_name="D (Winner)")
-    st.session_state.graph = create_graph()
+    # Initialize graph with Config D (Winner) using new structure
+    st.session_state.graph = build_graph(DEFAULT_CONFIG)
 
 # Sidebar
 with st.sidebar:
