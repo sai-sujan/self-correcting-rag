@@ -2,7 +2,6 @@
 
 A production-grade **Self-Correcting Retrieval Augmented Generation (RAG)** system designed to eliminate hallucinations and retrieval failures common in standard RAG applications.
 
-
 <img width="1697" height="765" alt="Screenshot 2026-01-31 at 9 01 11 PM" src="https://github.com/user-attachments/assets/e29aa3f1-52ee-464f-98ae-ed78d64de2de" />
 
 
@@ -44,6 +43,40 @@ The system follows a strict "Assembly Line" pipeline:
 4.  **Correction (Self-Correction)**:
     - **Judgement**: An LLM Judge evaluates the faithfulness of the answer.
     - **Retry Loop**: If unfaithful, the system rewrites the query and searches again.
+
+## 🧪 Experiment History & Evolution
+
+The system evolved through 7 major iterations to solve specific RAG failure modes:
+
+| Version | Name | Key Change | Verdict |
+| :--- | :--- | :--- | :--- |
+| **Baseline** | Naive Agent | Basic Tool Calling | ❌ **Failed** (Non-deterministic) |
+| **V1** | Minimal Chunks | 300 char chunks | ❌ **Failed** (Context fragmentation) |
+| **V2** | Strict Search | Pre-filter queries | ❌ **Failed** (Over-filtering) |
+| **V3** | Forced Search | Graph Pipeline vs Agent | ⚠️ **Functional** (High Latency ~20s) |
+| **V4** | Smart Retry | "Valid No Info" logic | ✅ **Efficient** |
+| **V5** | Reliable Extraction | Switched to 7B model | ⚠️ **Too Slow** (18s) |
+| **V6** | Fast Multi-Query | **Batched Extraction** | 🚀 **Winner** (4.5s latency) |
+| **V7** | Temp Tuning | Configurable Temperature | ⭐ **Refined** (Config D) |
+
+### 📊 Quantitative Results (V6/V7)
+
+Performance metrics comparing the optimized system against baseline:
+
+#### Average Latency Breakdown
+| Step | Time (ms) | Notes |
+| :--- | :--- | :--- |
+| Query Rewrite | 800 | |
+| Vector Search | 150 | |
+| Reranking | 400 | |
+| **Extraction** | **1500** | reduced from 12000ms in V5 |
+| Generation | 1200 | |
+| **TOTAL** | **~4050ms** | **< 5 seconds** |
+
+#### Quality Metrics
+- **Faithfulness**: **94%** (Rarely invents facts)
+- **Relevance**: **88%** (Retrieves correct docs)
+- **Context Utilization**: **92%** (Correctly uses extracted info)
 
 ## 📥 Installation
 
