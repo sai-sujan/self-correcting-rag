@@ -25,6 +25,46 @@ The system uses a **Heterogeneous Model Architecture**, deploying `qwen2.5:7b` f
 
 ## 🏗️ Architecture
 
+```mermaid
+graph TD
+    %% Styles
+    classDef graphNode fill:#2d333b,stroke:#58a6ff,stroke-width:2px,color:#fff;
+    classDef store fill:#1c2128,stroke:#a5d6ff,stroke-width:2px,color:#fff;
+    classDef model fill:#2d333b,stroke:#bc8cff,stroke-width:2px,color:#fff;
+    classDef logic fill:#2d333b,stroke:#3fb950,stroke-width:2px,color:#fff;
+
+    subgraph Ingestion ["📄 Ingestion Pipeline (Offline)"]
+        direction TB
+        PDF[PDF Documents]:::store --> Split[Parent-Child Splitter]:::logic
+        Split -->|Full Sections| Parent[Parent Store JSON]:::store
+        Split -->|Small Chunks| DB[(Qdrant Vector DB)]:::store
+    end
+
+    subgraph Retrieval ["🔍 Retrieval Loop (LangGraph)"]
+        direction TB
+        Query([User Query]):::graphNode --> Rewrite[Query Rewriter]:::model
+        Rewrite -->|Qwen 3B| Multi[Multi-Query Expansion]:::logic
+        Multi --> Hybrid[Hybrid Search]:::logic
+        DB -.->|vectors| Hybrid
+        Hybrid --> Rerank[Cross-Encoder Rerank]:::model
+    end
+
+    subgraph Generation ["⚙️ Generation & Correction"]
+        direction TB
+        Rerank --> Extract[Batched Extraction]:::model
+        Extract -->|Context| Answer[Generate Answer]:::model
+        Answer -->|Qwen 7B| Judge{Faithfulness \n Judge}:::logic
+        
+        Judge -->|Pass| Final([Final Answer]):::graphNode
+        Judge -->|Fail| Loop[Increment Retry]:::logic
+        Loop -->|Retry > 3| Fail([Max Retries Hit]):::graphNode
+        Loop -->|Retry <= 3| Rewrite
+    end
+
+    %% Wiring between subgraphs
+    Ingestion ~~~ Retrieval
+```
+
 The system follows a strict "Assembly Line" pipeline:
 
 1.  **Ingestion**:
