@@ -1,0 +1,389 @@
+# ============================================================================
+# Multi-Agent RAG System Configuration
+# Version: 1.0
+# All dimensions and parameters explicitly specified
+# ============================================================================
+
+# ============================================================================
+# EMBEDDING CONFIGURATION
+# ============================================================================
+embedding:
+  model: "nomic-embed-text"
+  dimension: 768                # Fixed output dimension
+  batch_size: 32               # Batch size for embedding generation
+  normalize: true              # L2 normalize vectors to unit length
+  max_input_length: 8192       # Maximum tokens per input
+  
+  # Performance tuning
+  cache_enabled: true          # Cache frequently used embeddings
+  cache_size: 1000            # Number of embeddings to cache
+  
+  # Model specifications
+  model_params: 137000000      # ~137M parameters
+  memory_footprint_mb: 548     # RAM usage in MB
+  latency_ms_per_batch: 75     # Average latency per batch
+
+
+# ============================================================================
+# LANGUAGE MODEL CONFIGURATION
+# ============================================================================
+llm:
+  model: "llama3.2"
+  provider: "ollama"
+  
+  # Context and generation limits
+  max_context_length: 131072   # 128K tokens (maximum)
+  working_context_limit: 16384 # 16K tokens (practical working limit)
+  max_output_tokens: 2048      # Maximum response length
+  
+  # Generation parameters
+  temperature: 0.1             # Low for factual consistency
+  top_p: 0.9                  # Nucleus sampling
+  top_k: 40                   # Top-k sampling
+  repeat_penalty: 1.1         # Prevent repetition
+  
+  # Model specifications
+  architecture: "decoder-only-transformer"
+  parameters: 3000000000       # 3B parameters
+  quantization: "Q4_K_M"      # 4-bit quantization
+  memory_footprint_gb: 2.0    # RAM usage
+  
+  # Performance benchmarks
+  tokens_per_second_cpu: 40    # Average on CPU
+  tokens_per_second_gpu: 125   # Average on GPU
+  
+  # Token budget allocation (total: 16,384 tokens)
+  token_budget:
+    system_prompt: 500
+    conversation_history: 2000
+    retrieved_context: 3000
+    user_query: 100
+    response_generation: 2048
+    safety_buffer: 8736        # Remaining buffer
+
+
+# ============================================================================
+# TEXT CHUNKING CONFIGURATION
+# ============================================================================
+chunking:
+  strategy: "hierarchical"     # parent-child chunking
+  
+  # Parent chunks (for context preservation)
+  parent:
+    size_chars: 1500          # Characters per parent chunk
+    overlap_chars: 300        # Character overlap (20%)
+    overlap_percent: 20       # Percentage overlap
+    estimated_tokens: 375     # ~4 chars per token
+    
+  # Child chunks (for retrieval)
+  child:
+    size_chars: 500           # Characters per child chunk
+    overlap_chars: 100        # Character overlap (20%)
+    overlap_percent: 20       # Percentage overlap
+    estimated_tokens: 125     # ~4 chars per token
+    children_per_parent: 3    # Typical number
+    
+  # Separators for text splitting
+  separators:
+    - "\n\n"                  # Double newline (paragraphs)
+    - "\n"                    # Single newline
+    - ". "                    # Sentence end
+    - "! "                    # Exclamation
+    - "? "                    # Question
+    - "; "                    # Semicolon
+    - ": "                    # Colon
+    - " "                     # Space (fallback)
+
+
+# ============================================================================
+# VECTOR DATABASE CONFIGURATION (Qdrant)
+# ============================================================================
+vector_db:
+  host: "localhost"
+  port: 6333
+  collection_name: "documents_hybrid"
+  
+  # Dense vector configuration
+  dense:
+    size: 768                 # Must match embedding dimension
+    distance: "Cosine"        # Cosine similarity
+    on_disk: false           # Keep in RAM for speed
+    
+  # Sparse vector configuration
+  sparse:
+    modifier: "Idf"          # Inverse Document Frequency weighting
+    on_disk: false
+    
+  # HNSW index parameters (for dense vectors)
+  hnsw:
+    m: 16                    # Connections per node
+    ef_construct: 100        # Construction time search
+    ef: 128                  # Query time search
+    full_scan_threshold: 10000
+    
+  # Storage estimates (per 100-page PDF)
+  storage_per_doc:
+    raw_text_kb: 500
+    num_chunks: 200
+    dense_vectors_kb: 600    # 200 chunks × 3 KB
+    sparse_vectors_kb: 1000  # 200 chunks × 5 KB (compressed)
+    metadata_kb: 50
+    index_overhead_kb: 200
+    total_mb: 2.55           # Total storage
+
+
+# ============================================================================
+# HYBRID SEARCH CONFIGURATION
+# ============================================================================
+retrieval:
+  # Top-K retrieval
+  top_k: 6                   # Final number of chunks to retrieve
+  top_k_dense: 20           # Initial dense search results
+  top_k_sparse: 20          # Initial sparse search results
+  
+  # Fusion weights
+  dense_weight: 0.7          # 70% semantic similarity
+  sparse_weight: 0.3         # 30% keyword matching
+  
+  # Reciprocal Rank Fusion (RRF)
+  rrf_constant: 60           # k value in RRF formula
+  
+  # Relevance grading
+  relevance_threshold: 7.0   # Minimum score (0-10) to keep chunk
+  min_relevant_chunks: 3     # Trigger fallback if below this
+  
+  # Performance targets
+  latency_targets_ms:
+    dense_search: 30
+    sparse_search: 25
+    fusion_reranking: 5
+    total: 60
+
+
+# ============================================================================
+# AGENT CONFIGURATION
+# ============================================================================
+agents:
+  # Summarization Agent
+  summarizer:
+    purpose: "condense_conversation_history"
+    max_input_messages: 10
+    max_input_tokens: 2000
+    output_tokens: 250         # Summary length
+    compression_ratio: 7       # ~7:1 compression
+    temperature: 0.3           # Slightly creative
+    activation_frequency: 5    # Summarize every N messages
+    
+  # Query Rewriting Agent
+  query_rewriter:
+    purpose: "expand_and_clarify_queries"
+    max_input_tokens: 400      # Query + summary
+    num_variations: 3          # Generate 3 rewritten queries
+    output_tokens_per_query: 75
+    temperature: 0.5           # Balanced creativity
+    techniques:
+      - "synonym_expansion"
+      - "context_integration"
+      - "question_decomposition"
+    
+  # Retrieval Agent
+  retriever:
+    purpose: "fetch_and_grade_documents"
+    max_queries: 3             # Process N rewritten queries
+    max_retrieved_total: 18    # 3 queries × 6 chunks
+    dedup_threshold: 0.95      # Cosine similarity for deduplication
+    final_chunks: 6            # After deduplication
+    grading_scale: 10          # 0-10 relevance scoring
+    fallback_web_search: true  # Enable web search fallback
+
+
+# ============================================================================
+# CONVERSATION MEMORY CONFIGURATION
+# ============================================================================
+memory:
+  # Sliding window parameters
+  max_messages: 10             # Last N messages (5 user + 5 assistant)
+  max_tokens: 2000            # Token limit for history
+  
+  # Pruning strategy
+  pruning_strategy: "sliding_window_with_summary"
+  compression_ratio: 5         # When summarizing old messages
+  
+  # Token estimation
+  avg_message_tokens: 200     # Average per message
+  
+  # Storage
+  persist_conversations: true
+  conversation_ttl_hours: 168  # 7 days
+
+
+# ============================================================================
+# LANGGRAPH STATE MACHINE CONFIGURATION
+# ============================================================================
+langgraph:
+  # State transitions
+  max_iterations: 3           # Prevent infinite loops
+  timeout_seconds: 30
+  
+  # Node configuration
+  nodes:
+    - summarize_history
+    - rewrite_query
+    - retrieve_documents
+    - grade_documents
+    - generate_response
+    - web_search_fallback
+    
+  # Conditional edges
+  conditions:
+    should_summarize:
+      check: "message_count > 10"
+    should_web_search:
+      check: "relevant_chunks < 3"
+    should_retry:
+      check: "retrieval_count < 3"
+
+
+# ============================================================================
+# PERFORMANCE & MONITORING
+# ============================================================================
+performance:
+  # Latency SLAs (milliseconds)
+  sla_targets:
+    p50_ms: 4000              # Median
+    p90_ms: 6000              # 90th percentile
+    p99_ms: 10000             # 99th percentile
+    timeout_ms: 30000         # Hard timeout
+    
+  # Component latency breakdown (typical)
+  component_latency_ms:
+    history_summarization: 500
+    query_rewriting: 800
+    embedding_generation: 150
+    vector_search: 60
+    document_grading: 400
+    response_generation: 2000
+    overhead: 100
+    
+  # Resource monitoring
+  monitoring:
+    enabled: true
+    metrics:
+      - "latency"
+      - "token_usage"
+      - "retrieval_quality"
+      - "memory_usage"
+    log_level: "INFO"
+
+
+# ============================================================================
+# EVALUATION METRICS
+# ============================================================================
+evaluation:
+  # Retrieval metrics
+  retrieval:
+    precision_at_k: 0.7       # Target: 70% relevant
+    recall_at_k: 0.6          # Target: 60% coverage
+    mrr: 0.7                  # Mean Reciprocal Rank
+    
+  # Generation metrics
+  generation:
+    faithfulness: 8.0         # LLM-judge score (0-10)
+    answer_relevance: 8.5     # LLM-judge score (0-10)
+    
+  # LLM-as-judge configuration
+  llm_judge:
+    model: "llama3.2"
+    temperature: 0.0          # Deterministic scoring
+    scale: 10                 # 0-10 scoring
+
+
+# ============================================================================
+# EXPERIMENT TRACKING (LangSmith)
+# ============================================================================
+experiment:
+  tracking_enabled: true
+  provider: "langsmith"
+  
+  # Project organization
+  project_naming: "rag-experiments/{timestamp}"
+  
+  # Metrics to track
+  metrics:
+    - "response_time_ms"
+    - "total_tokens"
+    - "retrieval_precision"
+    - "faithfulness_score"
+    - "answer_relevance_score"
+    
+  # Comparison experiments
+  baselines:
+    - "baseline_no_rewriting"
+    - "baseline_no_grading"
+    - "optimized_full_system"
+
+
+# ============================================================================
+# SYSTEM REQUIREMENTS
+# ============================================================================
+system_requirements:
+  # Minimum
+  minimum:
+    cpu_cores: 4
+    ram_gb: 8
+    storage_gb: 10
+    gpu: "optional"
+    
+  # Recommended
+  recommended:
+    cpu_cores: 8
+    ram_gb: 16
+    storage_gb: 50
+    gpu: "NVIDIA 8GB VRAM (RTX 3060+)"
+    
+  # Network
+  network:
+    required_for: "model_downloads"
+    bandwidth_mbps: 100
+
+
+# ============================================================================
+# SECURITY & PRIVACY
+# ============================================================================
+security:
+  # Encryption
+  encryption_at_rest: "AES-256"
+  encryption_in_transit: "TLS-1.3"
+  
+  # Access control
+  require_authentication: false  # Local deployment
+  api_key_required: false
+  
+  # Rate limiting
+  rate_limit:
+    enabled: false              # Disabled for local
+    max_requests_per_minute: 100
+    
+  # Data handling
+  data_retention_days: -1       # Indefinite (local)
+  pii_detection: false          # User responsibility
+
+
+# ============================================================================
+# LOGGING & DEBUGGING
+# ============================================================================
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # Log files
+  files:
+    application: "logs/app.log"
+    retrieval: "logs/retrieval.log"
+    generation: "logs/generation.log"
+    errors: "logs/errors.log"
+    
+  # Rotation
+  rotation:
+    max_bytes: 10485760         # 10 MB
+    backup_count: 5
