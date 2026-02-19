@@ -1,5 +1,7 @@
 # Self-Correcting RAG System
 
+https://ai-project-showcase-c1f8b8b9.base44.app
+
 A production-grade **Self-Correcting Retrieval Augmented Generation (RAG)** system designed to eliminate hallucinations and retrieval failures common in standard RAG applications.
 
 <img width="1697" height="765" alt="Screenshot 2026-01-31 at 9 01 11 PM" src="https://github.com/user-attachments/assets/e29aa3f1-52ee-464f-98ae-ed78d64de2de" />
